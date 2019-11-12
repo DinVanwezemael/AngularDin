@@ -1,0 +1,16 @@
+<nav>
+  <mat-sidenav-container class="nav-container">
+  <mat-sidenav mode="side" opened="true">
+  <mat-nav-list>
+  <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+  <a mat-list-item routerLink="/polls" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Polls</a>
+  <a mat-list-item routerLink="/friend" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vrienden</a>
+  <a mat-list-item routerLink="/security" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a>
+  <a  mat-list-item routerLink="/registreer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Registreer</a>
+  </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+  <router-outlet></router-outlet>
+  </mat-sidenav-content>
+  </mat-sidenav-container>
+  </nav>

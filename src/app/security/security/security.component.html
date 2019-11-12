@@ -1,0 +1,27 @@
+<div class="centered">
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+    <p>
+        <label>Username:</label>
+    <input matInput placeholder="Username" type="text" formControlName="Username" />
+    </p>
+
+
+    <p>
+        <label>Password:</label>
+    <input matInput type="password" placeholder="Password" formControlName="Password" />
+    </p>
+
+
+    <p><button class="action-button" type="submit"
+    [disabled]="submitted">Inloggen</button></p>
+
+
+
+    </form>
+    <div><button class="action-button" (click)="registreer()">Registreer</button></div>
+    <div><button class="action-button" (click)="logout()">Logout</button></div>
+
+    </div>
