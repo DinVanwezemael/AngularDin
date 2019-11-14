@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Poll } from '../models/poll.model';
 import { PollUser } from '../models/poll-user.model';
 import { PollDto } from '../models/poll-dto.model';
+import { Optie } from '../models/optie.model';
+import { Antwoord } from '../models/antwoord.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class PollService {
   }
 
   getPollByUser(userID: number): Observable<any[]>{
-    return this.http.get<any[]>("https://localhost:5001/api/polluser/" + userID);
+    return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/" + userID);
 }
 
   deletePoll(pollID: number): Observable<PollUser>{
@@ -26,7 +28,8 @@ export class PollService {
     return this.http.delete<PollUser>("https://localhost:5001/api/polluser/" + pollID);
   }
 
+  stemPoll(antwoord: Antwoord){
+    return this.http.post<Antwoord>("https://localhost:5001/api/Antwoord", antwoord);
+  }
 
 }
-
-

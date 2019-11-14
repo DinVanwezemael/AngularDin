@@ -1,20 +1,14 @@
-<h1>Polls</h1>
+<h1>Gemaakte polls</h1>
 <br>
-<h4>Nieuwe poll aanmaken</h4>
-<form [formGroup]="pollForm" (ngSubmit)="onSubmitPoll()">
-
-
-    <p>
-    <input matInput placeholder="Naam" type="text" formControlName="pollName" />
-    <input type="hidden" value="{{id}}" formControlName="userID">
-    </p>
-
-    <p><button mat-raised-button color="primary" type="submit"
-    [disabled]="submitted">Toevoegen</button></p>
-
-
-    </form>
+<button (click)="nieuwePoll()">Nieuwe poll maken</button>
 
     <ul>
-        <li *ngFor="let p of (polls | async)">{{p.naam}} <button (click)="onDeletePoll(p.pollUserID)">Delete</button></li>
+
+        <li *ngFor="let p of (polls | async)">{{p.naam}}
+            <button (click)="onDeletePoll(p.pollUserID)">Delete</button>
+            <button (click)="bewerkPoll(p)">Bewerk</button>
+        
+            <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}} <button (click)="stemOptie(o)">Stem!</button> </p>
+
+        </li>
     </ul>

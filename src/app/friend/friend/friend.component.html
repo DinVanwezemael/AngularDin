@@ -5,10 +5,15 @@
 <h1>Vrienden</h1>
 
 <ul>
-    <li *ngFor="let f of (friends | async)">{{f.username}} <button >Delete</button></li>
+    <li *ngFor="let f of (friends | async)">{{f.username}} <button (click)="verwijderVriend(f.reference)">Delete</button></li>
 </ul>
 
 <h1>Alle Users</h1>
 <ul>
-    <li *ngFor="let u of (allUsers | async)">{{u.username}} <button (click)="stuurVerzoek(u.userID)">Toevoegen</button></li>
+    <li *ngFor="let u of (allUsers | async)">{{u.username}} <button (click)="stuurVerzoek(u)">Toevoegen</button></li>
+</ul>
+
+<h1>Verzoeken</h1>
+<ul>
+    <li *ngFor="let v of (verzoeken | async)">{{v.username}} <button (click)="accepteerVerzoek(v)">Accepteer</button></li>
 </ul>

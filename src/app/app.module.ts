@@ -21,13 +21,17 @@ import { HomeComponent } from './home/home.component';
 import { SecurityComponent } from './security/security/security.component';
 import { RegistreerComponent } from './registreer/registreer/registreer.component';
 import { FriendComponent } from './friend/friend/friend.component';
+import { BewerkPollComponent } from './polls/bewerk-poll/bewerk-poll.component';
+import { NieuwePollsComponent } from './polls/nieuwe-polls/nieuwe-polls.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'friend', component: FriendComponent },
   { path: 'polls', component: PollsComponent },
   { path: 'security', component: SecurityComponent },
-  { path: 'registreer', component: RegistreerComponent }
+  { path: 'registreer', component: RegistreerComponent },
+  { path: 'bewerk-poll', component: BewerkPollComponent },
+  { path: 'nieuwe-poll', component: NieuwePollsComponent }
 ]
 
 
@@ -39,7 +43,9 @@ const appRoutes: Routes = [
     HomeComponent,
     SecurityComponent,
     RegistreerComponent,
-    FriendComponent
+    FriendComponent,
+    BewerkPollComponent,
+    NieuwePollsComponent
   ],
   imports: [
     BrowserModule,

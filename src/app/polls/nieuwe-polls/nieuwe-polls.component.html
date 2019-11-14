@@ -1,0 +1,25 @@
+<h4>Nieuwe poll aanmaken</h4>
+<form [formGroup]="pollForm" (ngSubmit)="onSubmitPoll()">
+
+
+    <p>
+    <input matInput placeholder="Naam" type="text" formControlName="pollName" />
+    </p>
+
+    <p>
+        <label>Optie</label>
+            <input matInput placeholder="Optie" type="text" formControlName="optie1" />
+            </p>
+
+            <p>
+                <label>Optie</label>
+                    <input matInput placeholder="Optie" type="text" formControlName="optie2" />
+                    </p>
+
+    <p><button mat-raised-button color="primary" type="submit"
+    [disabled]="submitted">Toevoegen</button></p>
+
+    
+
+
+    </form>

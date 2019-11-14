@@ -1,3 +1,5 @@
+import { Optie } from './optie.model';
+
 export class PollDto {
-    constructor(public naam: string, public pollID: number, public username: string, public polluserID: number, public pollname: string, public userID: number){}
+    constructor(public pollName: string, public pollID: number, public username: string, public polluserID: number, public userID: number, public opties: Optie[]){}
 }
