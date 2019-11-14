@@ -1,1 +1,16 @@
-<p>bewerk-poll works!</p>
+<ul>        <li *ngFor="let p of (poll | async)">{{p.naam}}
+            <button (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
+        
+            <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}}  <button (click)="stemOptie(o)">Stem!</button> <button (click)="verwijderOptie(o.optieID)">Verwijder</button> </p>
+
+        </li>
+    </ul>
+
+    <form [formGroup]="pollOptie" (ngSubmit)="nieuweOptie()">
+    <p>
+        <label>Nieuwe optie:</label>
+            <input matInput placeholder="Optie" type="text" formControlName="optie" />
+            </p>
+            <button mat-raised-button color="primary" type="submit"
+    [disabled]="submitted">Toevoegen</button>
+            </form>

@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   { path: 'polls', component: PollsComponent },
   { path: 'security', component: SecurityComponent },
   { path: 'registreer', component: RegistreerComponent },
-  { path: 'bewerk-poll', component: BewerkPollComponent },
+  { path: 'bewerk-poll/:id', component: BewerkPollComponent },
   { path: 'nieuwe-poll', component: NieuwePollsComponent }
 ]
 

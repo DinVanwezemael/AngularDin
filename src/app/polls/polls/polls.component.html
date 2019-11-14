@@ -5,10 +5,10 @@
     <ul>
 
         <li *ngFor="let p of (polls | async)">{{p.naam}}
-            <button (click)="onDeletePoll(p.pollUserID)">Delete</button>
-            <button (click)="bewerkPoll(p)">Bewerk</button>
+            <button (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
+            <button [routerLink]="['/bewerk-poll', p.pollID]">Bewerk</button>
         
-            <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}} <button (click)="stemOptie(o)">Stem!</button> </p>
+            <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}}  <button (click)="stemOptie(o)">Stem!</button> <button (click)="verwijderOptie(o.optieID)">Verwijder</button> </p>
 
         </li>
     </ul>

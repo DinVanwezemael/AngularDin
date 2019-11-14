@@ -34,12 +34,10 @@ export class PollsComponent implements OnInit {
 
   pollsOphalen(){
     this.polls = this._pollService.getPollByUser(parseInt(localStorage.getItem('userid')));
-    console.log(this.polls);
   }
 
   onDeletePoll(pollID){
     this._pollService.deletePoll(pollID).subscribe();
-    console.log("test" + pollID);
     this.pollsOphalen();
   }
 
@@ -54,8 +52,12 @@ export class PollsComponent implements OnInit {
       optieID: optie.optieID
     }
     this._pollService.stemPoll(antwoord).subscribe();
-    console.log(antwoord);
     this.pollsOphalen();
+  }
+
+  verwijderOptie(optieID){
+    console.log(optieID);
+    this._pollService.verwijderOptie(optieID).subscribe();
   }
 
   ngOnInit() {

@@ -19,6 +19,10 @@ export class PollService {
     return this.http.post<PollDto>("https://localhost:5001/api/PollUser", pollDto);
   }
 
+  insertOptie(optie: Optie){
+    return this.http.post<Optie>("https://localhost:5001/api/optie/", optie)
+  }
+
   getPollByUser(userID: number): Observable<any[]>{
     return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/" + userID);
 }
@@ -28,8 +32,17 @@ export class PollService {
     return this.http.delete<PollUser>("https://localhost:5001/api/polluser/" + pollID);
   }
 
+  verwijderOptie(optieID: number){
+    return this.http.delete("https://localhost:5001/api/optie/" + optieID);
+  }
+
   stemPoll(antwoord: Antwoord){
     return this.http.post<Antwoord>("https://localhost:5001/api/Antwoord", antwoord);
+  }
+
+  getPoll(pollID: number): Observable<PollDto[]>{
+    console.log(pollID);
+    return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/bewerk" + pollID);
   }
 
 }
