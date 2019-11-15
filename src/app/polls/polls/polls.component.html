@@ -1,14 +1,17 @@
+<div class="container">
 <h1>Gemaakte polls</h1>
 <br>
-<button (click)="nieuwePoll()">Nieuwe poll maken</button>
+<button class="btn btn-primary btn-lg btn-block" (click)="nieuwePoll()">Nieuwe poll maken</button>
 
     <ul>
 
         <li *ngFor="let p of (polls | async)">{{p.naam}}
-            <button (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
+            <button class="btn btn-danger" (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
             <button [routerLink]="['/bewerk-poll', p.pollID]">Bewerk</button>
+            <button [routerLink]="['/uitnodigen', p.pollID]">Vrienden uitnodigen</button>
         
             <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}}  <button (click)="stemOptie(o)">Stem!</button> <button (click)="verwijderOptie(o.optieID)">Verwijder</button> </p>
 
         </li>
     </ul>
+</div>

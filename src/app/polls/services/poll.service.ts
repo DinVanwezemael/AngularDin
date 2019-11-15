@@ -6,6 +6,8 @@ import { PollUser } from '../models/poll-user.model';
 import { PollDto } from '../models/poll-dto.model';
 import { Optie } from '../models/optie.model';
 import { Antwoord } from '../models/antwoord.model';
+import { Uitnodiging } from '../models/uitnodiging.model';
+import { Friend } from 'src/app/friend/models/friend.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +35,7 @@ export class PollService {
   }
 
   verwijderOptie(optieID: number){
-    return this.http.delete("https://localhost:5001/api/optie/" + optieID);
+    return this.http.delete<Friend>("https://localhost:5001/api/optie/" + optieID);
   }
 
   stemPoll(antwoord: Antwoord){
@@ -43,6 +45,14 @@ export class PollService {
   getPoll(pollID: number): Observable<PollDto[]>{
     console.log(pollID);
     return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/bewerk" + pollID);
+  }
+
+  vriendUitnodigenVoorPoll(uitnodiging: Uitnodiging){
+    return this.http.post<Uitnodiging>("https://localhost:5001/api/Uitnodiging", uitnodiging);
+  }
+
+  uitgenodigdePolls(userID: number): Observable<any[]>{
+    return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/uitgenodigd" + userID);
   }
 
 }

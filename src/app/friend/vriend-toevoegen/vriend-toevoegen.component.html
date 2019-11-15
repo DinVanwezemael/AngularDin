@@ -1,0 +1,9 @@
+<div class="container">
+<h1>Alle gebruikers</h1>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let u of (allUsers | async)">
+        {{u.username}} 
+        <button class="btn btn-primary" (click)="stuurVerzoek(u)">Toevoegen</button>
+    </li>
+</ul>
+</div>

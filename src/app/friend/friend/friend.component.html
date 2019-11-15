@@ -1,19 +1,11 @@
 
-
-<button (click)="haalAlleUsersOp()">Vrienden Toevoegen</button>
+<div class="container">
+<button class="btn btn-primary btn-lg btn-block" (click)="haalAlleUsersOp()">Vrienden Toevoegen</button>
 
 <h1>Vrienden</h1>
 
-<ul>
-    <li *ngFor="let f of (friends | async)">{{f.username}} <button (click)="verwijderVriend(f.reference)">Delete</button></li>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let f of (friends | async)">{{f.username}} <button class="btn btn-danger" (click)="verwijderVriend(f.reference)">Delete</button></li>
 </ul>
 
-<h1>Alle Users</h1>
-<ul>
-    <li *ngFor="let u of (allUsers | async)">{{u.username}} <button (click)="stuurVerzoek(u)">Toevoegen</button></li>
-</ul>
-
-<h1>Verzoeken</h1>
-<ul>
-    <li *ngFor="let v of (verzoeken | async)">{{v.username}} <button (click)="accepteerVerzoek(v)">Accepteer</button></li>
-</ul>
+</div>

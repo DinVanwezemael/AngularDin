@@ -1,0 +1,12 @@
+<div class="container">
+        <button class="btn btn-primary btn-lg btn-block" (click)="nieuwePoll()">Nieuwe poll maken</button>
+        
+            <ul>
+        
+                <li *ngFor="let p of (uitgenodigdePolls | async)">{{p.naam}}
+                
+                    <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}}  <button (click)="stemOptie(o)">Stem!</button></p>
+        
+                </li>
+            </ul>
+        </div>

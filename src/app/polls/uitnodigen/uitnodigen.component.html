@@ -1,0 +1,23 @@
+<ul>        
+    <li *ngFor="let p of (poll | async)">{{p.naam}}
+    <button (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
+
+        <p *ngFor="let o of p.opties">
+            {{o.naam}} - {{o.aantalStemmen}}
+            <button (click)="stemOptie(o)">Stem!</button>
+            <button (click)="verwijderOptie(o.optieID)">Verwijder</button>
+        </p>
+
+        <h1>Vrienden uitnodigen</h1>
+        <ul>
+                <li *ngFor="let f of (friends | async)">
+                    {{f.username}} - {{p.pollID}} - {{f.userFriendID}}
+                    <button (click)="vriendUitnodigen(p.pollID, f.userFriendID)">Uitnodigen</button>
+                </li>
+        </ul>
+    </li>
+</ul>
+
+
+
+

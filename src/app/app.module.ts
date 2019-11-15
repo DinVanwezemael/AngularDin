@@ -23,6 +23,10 @@ import { RegistreerComponent } from './registreer/registreer/registreer.componen
 import { FriendComponent } from './friend/friend/friend.component';
 import { BewerkPollComponent } from './polls/bewerk-poll/bewerk-poll.component';
 import { NieuwePollsComponent } from './polls/nieuwe-polls/nieuwe-polls.component';
+import { UitnodigenComponent } from './polls/uitnodigen/uitnodigen.component';
+import { VriendVerzoekComponent } from './friend/vriend-verzoek/vriend-verzoek.component';
+import { VriendToevoegenComponent } from './friend/vriend-toevoegen/vriend-toevoegen.component';
+import { UitgenodigdePollsComponent } from './polls/uitgenodigde-polls/uitgenodigde-polls.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,7 +35,11 @@ const appRoutes: Routes = [
   { path: 'security', component: SecurityComponent },
   { path: 'registreer', component: RegistreerComponent },
   { path: 'bewerk-poll/:id', component: BewerkPollComponent },
-  { path: 'nieuwe-poll', component: NieuwePollsComponent }
+  { path: 'nieuwe-poll', component: NieuwePollsComponent },
+  { path: 'uitnodigen/:id', component: UitnodigenComponent },
+  { path: 'vriend-toevoegen', component: VriendToevoegenComponent },
+  { path: 'vriend-verzoek', component: VriendVerzoekComponent },
+  { path: 'uitgenodigde-polls', component: UitgenodigdePollsComponent }
 ]
 
 
@@ -45,7 +53,11 @@ const appRoutes: Routes = [
     RegistreerComponent,
     FriendComponent,
     BewerkPollComponent,
-    NieuwePollsComponent
+    NieuwePollsComponent,
+    UitnodigenComponent,
+    VriendVerzoekComponent,
+    VriendToevoegenComponent,
+    UitgenodigdePollsComponent
   ],
   imports: [
     BrowserModule,

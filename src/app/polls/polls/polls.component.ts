@@ -45,6 +45,10 @@ export class PollsComponent implements OnInit {
     this.router.navigate(["bewerk-poll"], poll)
   }
 
+  nodigUserUitvoorPoll(poll){
+    this.router.navigate(["uitnodigen"], poll)
+  }
+
   stemOptie(optie){
 
     let antwoord: Antwoord = {

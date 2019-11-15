@@ -1,0 +1,6 @@
+<div class="container">
+<h1>Verzoeken</h1>
+<ul>
+    <li *ngFor="let v of (verzoeken | async)">{{v.username}} <button (click)="accepteerVerzoek(v)">Accepteer</button></li>
+</ul>
+</div>

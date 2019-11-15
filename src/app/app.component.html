@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav>
   <mat-sidenav-container class="nav-container">
   <mat-sidenav mode="side" opened="true">
   <mat-nav-list>
@@ -14,3 +14,50 @@
   </mat-sidenav-content>
   </mat-sidenav-container>
   </nav>
+ -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="polls" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Polls
+              </a>
+              <div class="dropdown-menu" aria-labelledby="polls">
+                <a class="dropdown-item" [routerLink]="['/polls']" href="#">Zelfgemaakte polls</a>
+                <a class="dropdown-item" [routerLink]="['/uitgenodigde-polls']" href="#">Uitgenodigde polls</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" [routerLink]="['/nieuwe-poll']" href="#">Nieuwe poll maken</a>
+              </div>
+            </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="friend" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Vrienden
+              </a>
+              <div class="dropdown-menu" aria-labelledby="friend">
+                <a class="dropdown-item" [routerLink]="['/friend']" href="#">Vrienden</a>
+                <a class="dropdown-item" [routerLink]="['/vriend-verzoek']" href="#">Vriendverzoeken</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" [routerLink]="['/vriend-toevoegen']" href="#">Vrienden Toevoegen</a>
+              </div>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" mat-list-item routerLink="/security" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link"  mat-list-item routerLink="/registreer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Registreer</a>
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </nav>
+
+    <router-outlet></router-outlet>

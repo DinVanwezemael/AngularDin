@@ -33,6 +33,7 @@ export class FriendService {
   }
 
   verwijderVriend(reference: number){
-    return this.http.delete("https://localhost:5001/api/Friend" + reference);
+    return this.http.delete("https://localhost:5001/api/Friend/" + reference);
   }
+
 }
