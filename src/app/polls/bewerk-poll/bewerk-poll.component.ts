@@ -16,6 +16,9 @@ export class BewerkPollComponent implements OnInit {
 poll: Observable<PollDto[]>;
 
   constructor(private _Activatedroute:ActivatedRoute, private _pollService: PollService, private fb: FormBuilder, private router: Router) { 
+    if(localStorage.getItem('userid') == null){
+      this.router.navigate(['security']);
+    }
     this.getPoll();
   }
 

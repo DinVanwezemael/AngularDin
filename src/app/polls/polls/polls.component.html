@@ -30,9 +30,9 @@
             {{p.naam}}
           </a>
           <div class="options">
-          <button class="btn btn-danger" (click)="onDeletePoll(p.pollUserID)"><i class="fas fa-trash-alt"></i></button>
-            <button class="btn btn-warning" [routerLink]="['/bewerk-poll', p.pollID]"><i class="fas fa-edit"></i></button>
-            <button class="btn btn-info" [routerLink]="['/uitnodigen', p.pollID]"><i class="fas fa-envelope"></i></button>
+          <button class="btn btn-circle btn-danger" (click)="onDeletePoll(p.pollUserID)"><i class="fas fa-trash-alt"></i></button>
+            <button class="btn btn-circle btn-warning" [routerLink]="['/bewerk-poll', p.pollID]"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-circle btn-info" [routerLink]="['/uitnodigen', p.pollID]"><i class="fas fa-envelope"></i></button>
           </div>
         </h4>
       </div>
@@ -40,8 +40,8 @@
         <div class="card-body">
          <p *ngFor="let o of p.opties">
              {{o.naam}} - {{o.aantalStemmen}}
-             <button class="btn btn-success" (click)="stemOptie(o)"><i class="fas fa-vote-yea"></i></button>
-             <button class="btn btn-danger" (click)="verwijderOptie(o.optieID)"><i class="fas fa-trash-alt"></i></button>
+             <button class="btn btn-circle btn-success" (click)="stemOptie(o)"><i class="fas fa-vote-yea"></i></button>
+             <button class="btn btn-circle btn-danger" (click)="verwijderOptie(o.optieID)"><i class="fas fa-trash-alt"></i></button>
             </p>
         </div>
       </div>

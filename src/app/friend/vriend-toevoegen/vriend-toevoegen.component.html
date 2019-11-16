@@ -3,7 +3,9 @@
 <ul class="list-group">
     <li class="list-group-item" *ngFor="let u of (allUsers | async)">
         {{u.username}} 
-        <button class="btn btn-primary" (click)="stuurVerzoek(u)">Toevoegen</button>
+        <div class="options">
+        <button class="btn btn-circle btn-primary" (click)="stuurVerzoek(u)"><i class="fas fa-user-plus"></i></button>
+    </div>
     </li>
 </ul>
 </div>

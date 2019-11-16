@@ -6,11 +6,13 @@ import { BewerkPollComponent } from './bewerk-poll/bewerk-poll.component';
 import { NieuwePollsComponent } from './nieuwe-polls/nieuwe-polls.component';
 import { UitnodigenComponent } from './uitnodigen/uitnodigen.component';
 import { UitgenodigdePollsComponent } from './uitgenodigde-polls/uitgenodigde-polls.component';
+import { StemmenComponent } from './stemmen/stemmen.component';
+import { OverzichtPollComponent } from './overzicht-poll/overzicht-poll.component';
 
 
 
 @NgModule({
-  declarations: [BewerkPollComponent, NieuwePollsComponent, UitnodigenComponent, UitgenodigdePollsComponent],
+  declarations: [BewerkPollComponent, NieuwePollsComponent, UitnodigenComponent, UitgenodigdePollsComponent, StemmenComponent, OverzichtPollComponent],
   imports: [
     CommonModule,
     FormsModule,

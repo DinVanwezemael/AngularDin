@@ -12,7 +12,11 @@ import { PollDto } from '../models/poll-dto.model';
 })
 export class NieuwePollsComponent implements OnInit {
 
-  constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router) { }
+  constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router) {
+    if(localStorage.getItem('userid') == null){
+      this.router.navigate(['security']);
+    }
+   }
 
   
 

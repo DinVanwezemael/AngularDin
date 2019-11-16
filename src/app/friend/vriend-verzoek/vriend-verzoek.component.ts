@@ -3,6 +3,7 @@ import { FriendService } from '../services/friend.service';
 import { AuthenticateService } from 'src/app/security/services/authenticate.service';
 import { Observable } from 'rxjs';
 import { Friend } from '../models/friend.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vriend-verzoek',
@@ -13,7 +14,10 @@ export class VriendVerzoekComponent implements OnInit {
   
   verzoeken: Observable<any[]>;
 
-  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService) {
+  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router) {
+    if(localStorage.getItem('userid') == null){
+      this.router.navigate(['security']);
+    }
     this.haalVriendschapsverzoekenOp();
   }
 

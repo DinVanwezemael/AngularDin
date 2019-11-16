@@ -23,6 +23,9 @@ export class PollsComponent implements OnInit {
   polls: Observable<PollDto[]>;
 
   constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router) {
+    if(localStorage.getItem('userid') == null){
+      this.router.navigate(['security']);
+    }
     this.pollsOphalen();
   }
 

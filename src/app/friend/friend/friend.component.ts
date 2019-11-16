@@ -5,6 +5,7 @@ import { AuthenticateService } from 'src/app/security/services/authenticate.serv
 import { User } from 'src/app/security/models/user.model';
 import { Friend } from '../models/friend.model';
 import { AddFriend } from '../models/add-friend.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friend',
@@ -17,7 +18,10 @@ export class FriendComponent implements OnInit {
   allUsers: Observable<User[]>;
   verzoeken: Observable<any[]>;
 
-  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService) {
+  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router) {
+    if(localStorage.getItem('userid') == null){
+      this.router.navigate(['security']);
+    }
     this.haalAlleUsersOp();
     this.haalVriendenOp();
     this.haalVriendschapsverzoekenOp();

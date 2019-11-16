@@ -27,6 +27,8 @@ import { UitnodigenComponent } from './polls/uitnodigen/uitnodigen.component';
 import { VriendVerzoekComponent } from './friend/vriend-verzoek/vriend-verzoek.component';
 import { VriendToevoegenComponent } from './friend/vriend-toevoegen/vriend-toevoegen.component';
 import { UitgenodigdePollsComponent } from './polls/uitgenodigde-polls/uitgenodigde-polls.component';
+import { StemmenComponent } from './polls/stemmen/stemmen.component';
+import { OverzichtPollComponent } from './polls/overzicht-poll/overzicht-poll.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +41,9 @@ const appRoutes: Routes = [
   { path: 'uitnodigen/:id', component: UitnodigenComponent },
   { path: 'vriend-toevoegen', component: VriendToevoegenComponent },
   { path: 'vriend-verzoek', component: VriendVerzoekComponent },
-  { path: 'uitgenodigde-polls', component: UitgenodigdePollsComponent }
+  { path: 'stemmen/:id', component: StemmenComponent },
+  { path: 'uitgenodigde-polls', component: UitgenodigdePollsComponent },
+  { path: 'overzicht-poll/:id', component: OverzichtPollComponent }
 ]
 
 
@@ -57,7 +61,9 @@ const appRoutes: Routes = [
     UitnodigenComponent,
     VriendVerzoekComponent,
     VriendToevoegenComponent,
-    UitgenodigdePollsComponent
+    UitgenodigdePollsComponent,
+    StemmenComponent,
+    OverzichtPollComponent
   ],
   imports: [
     BrowserModule,

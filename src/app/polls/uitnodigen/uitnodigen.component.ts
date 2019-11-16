@@ -19,6 +19,9 @@ export class UitnodigenComponent implements OnInit {
   friends: Observable<Friend[]>;
 
   constructor(private _Activatedroute:ActivatedRoute, private _friendService: FriendService, private _pollService: PollService, private fb: FormBuilder, private router: Router) { 
+    if(localStorage.getItem('userid') == null){
+      this.router.navigate(['security']);
+    }
     this.haalVriendenOp();
   }
 

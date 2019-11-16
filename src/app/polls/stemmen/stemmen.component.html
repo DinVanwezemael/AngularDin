@@ -1,0 +1,18 @@
+<div class="container">
+
+
+    <div *ngFor="let p of (poll | async)">
+
+        <h1 class="display-3">Stem voor de poll <span class="font-italic font-weight-bold">{{p.naam}}</span></h1>
+
+        <br><br>
+
+            <div *ngFor="let o of p.opties" class="jumbotron">
+                <div (click)="stemOptie(o, p.pollID)">
+                    <h3 class="display-4">{{o.naam}}</h3>
+                        </div>
+            </div>
+        </div>
+        
+        
+    </div>

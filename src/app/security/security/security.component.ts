@@ -38,6 +38,9 @@ export class SecurityComponent implements OnInit {
     this._authenticateService.authenticate(this.loginForm.value).subscribe(result => {
       localStorage.setItem("currentUser", JSON.stringify(result));
       localStorage.setItem("userid", result.userID.toString());
+      localStorage.setItem("username", result.username.toString());
+      localStorage.setItem("firstname", result.firstName.toString());
+      localStorage.setItem("lastname", result.lastName.toString());
     this.router.navigate(['/polls']);
 });
   }
