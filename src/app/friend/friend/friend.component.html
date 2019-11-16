@@ -1,11 +1,16 @@
 
 <div class="container">
-<button class="btn btn-primary btn-lg btn-block" (click)="haalAlleUsersOp()">Vrienden Toevoegen</button>
-
+<!-- <button class="btn btn-primary btn-lg btn-block" (click)="haalAlleUsersOp()">Vrienden Toevoegen</button> -->
+<br>
 <h1>Vrienden</h1>
 
 <ul class="list-group">
-    <li class="list-group-item" *ngFor="let f of (friends | async)">{{f.username}} <button class="btn btn-danger" (click)="verwijderVriend(f.reference)">Delete</button></li>
+    <li class="list-group-item" *ngFor="let f of (friends | async)">
+        {{f.username}}
+        <div class="options">
+            <button class="btn btn-danger" (click)="verwijderVriend(f.reference)"><i class="fas fa-trash-alt"></i></button>
+        </div>
+    </li>
 </ul>
 
 </div>
