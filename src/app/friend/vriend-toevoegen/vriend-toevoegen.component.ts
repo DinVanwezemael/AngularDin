@@ -4,6 +4,7 @@ import { AuthenticateService } from 'src/app/security/services/authenticate.serv
 import { Observable } from 'rxjs';
 import { User } from 'src/app/security/models/user.model';
 import { Router } from '@angular/router';
+import { AddFriend } from '../models/add-friend.model';
 
 @Component({
   selector: 'app-vriend-toevoegen',
@@ -25,6 +26,18 @@ export class VriendToevoegenComponent implements OnInit {
   haalAlleUsersOp(){
     this.allUsers = this._authenticateService.getAllUsers();
     console.log(this.allUsers);
+  }
+
+  stuurVerzoek(friend){
+
+    let verzoekVriend: AddFriend = {
+      status: 1,
+      userID: parseInt(localStorage.getItem('userid')),
+      userFriendID: friend.userID
+    }
+
+    this._friendService.stuurVerzoek(verzoekVriend).subscribe();
+
   }
 
   ngOnInit() {

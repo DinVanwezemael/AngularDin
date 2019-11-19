@@ -1,5 +1,5 @@
 <div  *ngFor="let p of (poll | async)" class="jumbotron">
-        <div>
-            <h3 class="display-4">{{p.naam}}</h3>
+        <div *ngFor="let o of p.opties">
+            <h3>{{o.naam}} -- {{o.aantalStemmen}}</h3>
         </div>
     </div>

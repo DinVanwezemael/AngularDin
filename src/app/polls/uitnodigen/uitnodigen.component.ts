@@ -38,7 +38,8 @@ export class UitnodigenComponent implements OnInit {
 
     let uitnodigen: Uitnodiging = {
       pollID: pollID,
-      userID: friendID
+      userID: friendID,
+      reference: 0
     }
 
     console.log(uitnodigen);

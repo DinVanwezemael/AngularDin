@@ -47,6 +47,11 @@ export class PollService {
     return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/bewerk" + pollID);
   }
 
+  getPollEnkel(pollID: number): Observable<PollDto>{
+    console.log(pollID);
+    return this.http.get<PollDto>("https://localhost:5001/api/polluser/bewerk" + pollID);
+  }
+
   vriendUitnodigenVoorPoll(uitnodiging: Uitnodiging){
     return this.http.post<Uitnodiging>("https://localhost:5001/api/Uitnodiging", uitnodiging);
   }
@@ -54,5 +59,10 @@ export class PollService {
   uitgenodigdePolls(userID: number): Observable<any[]>{
     return this.http.get<PollDto[]>("https://localhost:5001/api/polluser/uitgenodigd" + userID);
   }
+
+   updateUitnodiging(uitnodiging: any){
+     console.log(uitnodiging);
+    return this.http.put("https://localhost:5001/api/uitnodiging/" + uitnodiging.uitnodigingID, uitnodiging);
+  } 
 
 }
