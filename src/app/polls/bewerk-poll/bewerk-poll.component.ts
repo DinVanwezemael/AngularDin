@@ -41,11 +41,15 @@ poll: Observable<PollDto[]>;
     }
 
     this._pollService.insertOptie(optie).subscribe();
+
+    
   }
 
   verwijderOptie(optieID){
     console.log(optieID);
     this._pollService.verwijderOptie(optieID).subscribe();
+
+    this.getPoll();
   }
 
   sub;

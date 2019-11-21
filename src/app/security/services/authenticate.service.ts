@@ -21,7 +21,11 @@ constructor(private _httpClient: HttpClient) { }
         return this._httpClient.get<User[]>("https://localhost:5001/api/userbeheer/getall");
     }
 
-    getUser(userID: number): Observable<User>{
-        return this._httpClient.get<User>("https://localhost:5001/api/UserBeheer" + userID);
+    getUser(userID: number){
+        return this._httpClient.get<User>("https://localhost:5001/api/UserBeheer/getuser" + userID);
+    }
+
+    updateUser(user: User){
+        return this._httpClient.put<User>("https://localhost:5001/api/UserBeheer/" + user.userID, user);
     }
 }

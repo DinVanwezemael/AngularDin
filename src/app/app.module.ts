@@ -11,6 +11,7 @@ import { MatSidenavModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SecurityModule } from './security/security.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule} from '@angular/forms';
 
 //components
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,7 @@ import { UitgenodigdePollsComponent } from './polls/uitgenodigde-polls/uitgenodi
 import { StemmenComponent } from './polls/stemmen/stemmen.component';
 import { OverzichtPollComponent } from './polls/overzicht-poll/overzicht-poll.component';
 import { ProfielAanpassenComponent } from './security/profiel-aanpassen/profiel-aanpassen.component';
+import { NavigatieComponent } from './navigatie/navigatie.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -66,7 +68,8 @@ const appRoutes: Routes = [
     UitgenodigdePollsComponent,
     StemmenComponent,
     OverzichtPollComponent,
-    ProfielAanpassenComponent
+    ProfielAanpassenComponent,
+    NavigatieComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     SecurityModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

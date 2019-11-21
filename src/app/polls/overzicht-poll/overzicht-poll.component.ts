@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PollService } from '../services/poll.service';
 import { Observable } from 'rxjs';
 import { PollDto } from '../models/poll-dto.model';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-overzicht-poll',

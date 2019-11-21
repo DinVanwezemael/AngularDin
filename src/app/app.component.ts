@@ -14,6 +14,17 @@ export class AppComponent {
   firstname = localStorage.getItem('firstname');
   lastname = localStorage.getItem('lastname');
   username = localStorage.getItem('username');
+  loggedIn
+
+  constructor(){
+    if(localStorage.getItem('userid') == null){
+        this.loggedIn = false
+    }
+    else{
+      this.loggedIn = false;
+    }
+  }
+  
 
   logout(){
     localStorage.removeItem('currentUser');

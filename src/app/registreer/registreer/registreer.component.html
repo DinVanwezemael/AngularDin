@@ -1,38 +1,39 @@
 <div class="centered">
-<form [formGroup]="registreerForm" (ngSubmit)="onSubmit()">
 
-    <p>
-        <label>Username:</label>
-    <input placeholder="Username" type="text" formControlName="username" />
-    </p>
-
-
-    <p>
-        <label>Firstname:</label>
-    <input type="Firstname" placeholder="Firstname" type="text" formControlName="firstName" />
-    </p>
-
-    <p>
-        <label>Lastname:</label>
-        <input class="form-control" type="Lastname" placeholder="Lastname" type="text" formControlName="lastName" />
+    <form [formGroup]="registreerForm" (ngSubmit)="onSubmit()">
+    
+        <p>
+            <label>Username:</label>
+        <input placeholder="Username" class="form-control" type="text" formControlName="username" />
         </p>
-
+    
+    
         <p>
-            <label>Email:</label>
-            <input type="email" placeholder="email" type="text" formControlName="email" />
-            </p>
-
+            <label>Firstname:</label>
+        <input type="Firstname" class="form-control" [(ngModel)]="user.firstname" placeholder="Firstname" type="text" formControlName="firstName" />
+        </p>
+    
         <p>
-            <label>Password:</label>
-            <input type="password" placeholder="Password" formControlName="password" />
+            <label>Lastname:</label>
+            <input class="form-control" type="Lastname" placeholder="Lastname" type="text" formControlName="lastName" />
             </p>
-
-
-    <p><button class="action-button" color="primary" type="submit"
-    [disabled]="submitted">Registreren</button></p>
-
-
-
-    </form>
-    <div><button class="action-button" color="primary" (click)="login()">Login</button></div>
+    
+            <p>
+                <label>Email:</label>
+                <input type="email" class="form-control" placeholder="email" type="text" formControlName="email" />
+                </p>
+    
+            <p>
+                <label>Password:</label>
+                <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+                </p>
+    
+    
+    
+        <p><button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="submitted">Registreren</button></p>
+    
+        </form>
+    <div>
+        <button class="btn btn-outline-primary btn-lg btn-block" (click)="login()">Login</button>
+    </div>
 </div>

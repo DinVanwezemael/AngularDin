@@ -18,11 +18,12 @@ export class SecurityComponent implements OnInit {
   });
 
   constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router) {
-    if(localStorage.getItem("token") != null){
-
+    if(localStorage.getItem("userid") != null){
+      this.router.navigate[('')];
     }
   }
 
+  loggedIn
 
   ngOnInit() {
     
@@ -41,6 +42,7 @@ export class SecurityComponent implements OnInit {
       localStorage.setItem("username", result.username.toString());
       localStorage.setItem("firstname", result.firstName.toString());
       localStorage.setItem("lastname", result.lastName.toString());
+      this.loggedIn = true;
     this.router.navigate(['/polls']);
 });
   }

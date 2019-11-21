@@ -5,6 +5,7 @@ import { PollDto } from '../models/poll-dto.model';
 import { Observable } from 'rxjs';
 import { Antwoord } from '../models/antwoord.model';
 import { Uitnodiging } from '../models/uitnodiging.model';
+import { Poll } from '../models/poll.model';
 
 @Component({
   selector: 'app-stemmen',
@@ -16,6 +17,7 @@ export class StemmenComponent implements OnInit {
   poll: Observable<PollDto[]>;
   pollEnkel: Observable<PollDto>;
   uitnodiging: Observable<Uitnodiging>;
+  voted
 
   constructor(private _pollService: PollService, private router: Router, private _Activatedroute:ActivatedRoute) {
     console.log(this.reference);
@@ -58,14 +60,27 @@ export class StemmenComponent implements OnInit {
   uitnodigingID
   userID
   reference
+  notvoted
 
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
       this.uitnodigingID = params.get('uitnodigingID');  
       this.userID = params.get('userID');  
-      this.reference = params.get('reference');  
-      this.getPoll(this.id);
+      this.reference = params.get('reference');
+
+      this.poll = this._pollService.getPoll(this.id);
+      
+      if(this.reference > 0){
+        this.voted = true;
+        this.notvoted = false;
+        console.log(this.voted);
+      }
+      else{
+        this.notvoted = true;
+        this.voted = false;
+        console.log(this.voted);
+      }
 
       console.log(this.id + " " + this.uitnodigingID + " " + this.userID + " " + this.reference);
   });

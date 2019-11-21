@@ -5,7 +5,7 @@
 
             <div  *ngFor="let p of (uitgenodigdePolls | async)" class="jumbotron">
                 <div [routerLink]="['/stemmen', p.pollID, p.uitnodigingID, p.userID, p.reference]">
-                    <h3 class="display-4">{{p.naam}} - {{p.uitnodigingID}}</h3>
+                    <h3 class="display-4">{{p.naam}}</h3>
                 </div>
             </div>
         </div>

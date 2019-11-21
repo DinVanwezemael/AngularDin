@@ -1,6 +1,13 @@
 <div class="container">
-<h1>Verzoeken</h1>
-<ul>
-    <li *ngFor="let v of (verzoeken | async)">{{v.username}} <button (click)="accepteerVerzoek(v)">Accepteer</button></li>
-</ul>
-</div>
+    <h1>Verzoeken</h1>
+    
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let v of (verzoeken | async)">
+                    {{v.username}}
+                    <div class="options">
+                        <button class="btn btn-success" (click)="accepteerVerzoek(v)">Accepteer</button>
+                    </div>
+                </li>
+            </ul>
+    </div>
+    

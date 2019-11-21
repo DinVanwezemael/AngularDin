@@ -5,13 +5,13 @@
     <div  *ngFor="let p of (poll | async)" class="jumbotron">
             <h3 class="display-4">{{p.naam}}</h3>
             <p class="lead">
-                <button class="btn btn-danger" (click)="onDeletePoll(p.pollUserID)"><i class="fas fa-trash-alt"></i></button>
+                <button class="btn btn-danger btn-circle" (click)="onDeletePoll(p.pollUserID)"><i class="fas fa-trash-alt"></i></button>
             </p>
             <hr class="my-4">
             <h5 class="display-5">Opties:</h5>
             <p *ngFor="let o of p.opties">
                     {{o.naam}} - {{o.aantalStemmen}}
-                    <button class="btn btn-danger" (click)="verwijderOptie(o.optieID)"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-circle btn-danger" (click)="verwijderOptie(o.optieID)"><i class="fas fa-trash-alt"></i></button>
                 </p>
             
     </div>
