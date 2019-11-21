@@ -8,11 +8,12 @@ import { UitnodigenComponent } from './uitnodigen/uitnodigen.component';
 import { UitgenodigdePollsComponent } from './uitgenodigde-polls/uitgenodigde-polls.component';
 import { StemmenComponent } from './stemmen/stemmen.component';
 import { OverzichtPollComponent } from './overzicht-poll/overzicht-poll.component';
+import { UitkomstPollComponent } from './uitkomst-poll/uitkomst-poll.component';
 
 
 
 @NgModule({
-  declarations: [BewerkPollComponent, NieuwePollsComponent, UitnodigenComponent, UitgenodigdePollsComponent, StemmenComponent, OverzichtPollComponent],
+  declarations: [BewerkPollComponent, NieuwePollsComponent, UitnodigenComponent, UitgenodigdePollsComponent, StemmenComponent, OverzichtPollComponent, UitkomstPollComponent],
   imports: [
     CommonModule,
     FormsModule,

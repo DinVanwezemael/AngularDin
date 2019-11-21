@@ -1,7 +1,7 @@
      <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- <div *ngIf="loggedIn"> -->
+    <div *ngIf="loggedIn">
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   
@@ -71,7 +71,7 @@
   
       </ul>
       <!-- End of Sidebar -->
-    <!-- </div> -->
+    </div>
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
   
@@ -79,9 +79,47 @@
         <div id="content">
   
 
-          <!-- <div *ngIf="loggedIn"> -->
-            <app-navigatie></app-navigatie>
-          <!-- </div> -->
+          <div *ngIf="loggedIn">
+              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  
+            
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                  </button>
+          
+                 
+          
+                  
+                  <ul class="navbar-nav ml-auto">
+          
+                    
+                    <div class="topbar-divider d-none d-sm-block"></div>
+          
+                    
+                    <li class="nav-item dropdown no-arrow">
+                      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{firstname}} {{lastname}} ({{username}})</span>
+                        <img class="img-profile rounded-circle" src="https://api.adorable.io/avatars/60/{{id}}@adorable.png">
+                      </a>
+                    
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a [routerLink]="['/profiel-aanpassen']" class="dropdown-item">
+                          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Profiel aanpassen
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Logout
+                        </a>
+                      </div>
+                    </li>
+          
+                  </ul> 
+                
+                </nav>
+            <!-- <app-navigatie></app-navigatie> -->
+           </div>
           <!-- 
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
   

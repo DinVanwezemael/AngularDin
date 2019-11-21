@@ -42,6 +42,8 @@ poll: Observable<PollDto[]>;
 
     this._pollService.insertOptie(optie).subscribe();
 
+    this.getPoll();
+
     
   }
 

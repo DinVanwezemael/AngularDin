@@ -3,6 +3,8 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Userlogin } from '../models/userlogin.model';
 import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
+import { NavigatieComponent } from '../../navigatie/navigatie.component';
 
 @Component({
   selector: 'app-security',
@@ -17,10 +19,17 @@ export class SecurityComponent implements OnInit {
     Password: new FormControl(''),
   });
 
-  constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router, private app: AppComponent) {
     if(localStorage.getItem("userid") != null){
-      this.router.navigate[('')];
+      app.loggedIn = true;
+      //this.router.navigate[('/polls')];
+      
     }
+    else{
+      //appComponent.loggedIn = false;
+    }
+
+    
   }
 
   loggedIn
@@ -42,9 +51,16 @@ export class SecurityComponent implements OnInit {
       localStorage.setItem("username", result.username.toString());
       localStorage.setItem("firstname", result.firstName.toString());
       localStorage.setItem("lastname", result.lastName.toString());
-      this.loggedIn = true;
+      this.app.loggedIn = true;
+
+      this.app.firstname = result.firstName.toString();
+      this.app.lastname = result.lastName.toString();
+      this.app.username = result.username.toString();
+      this.app.id = result.userID.toString();
+      this.app.loggedIn = true;
     this.router.navigate(['/polls']);
-});
+  });
+  this.app.loggedIn = true;
   }
 
   logout(){

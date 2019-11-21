@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SecurityModule } from './security/security.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule} from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 //components
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +33,7 @@ import { StemmenComponent } from './polls/stemmen/stemmen.component';
 import { OverzichtPollComponent } from './polls/overzicht-poll/overzicht-poll.component';
 import { ProfielAanpassenComponent } from './security/profiel-aanpassen/profiel-aanpassen.component';
 import { NavigatieComponent } from './navigatie/navigatie.component';
+import { UitkomstPollComponent } from './polls/uitkomst-poll/uitkomst-poll.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
   { path: 'stemmen/:id/:uitnodigingID/:userID/:reference', component: StemmenComponent },
   { path: 'uitgenodigde-polls', component: UitgenodigdePollsComponent },
   { path: 'overzicht-poll/:id', component: OverzichtPollComponent },
-  { path: 'profiel-aanpassen', component: ProfielAanpassenComponent }
+  { path: 'profiel-aanpassen', component: ProfielAanpassenComponent },
+  { path: 'uitkomst-poll/:id', component: UitkomstPollComponent }
 ]
 
 
@@ -69,7 +72,8 @@ const appRoutes: Routes = [
     StemmenComponent,
     OverzichtPollComponent,
     ProfielAanpassenComponent,
-    NavigatieComponent
+    NavigatieComponent,
+    UitkomstPollComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +88,8 @@ const appRoutes: Routes = [
     SecurityModule,
     ReactiveFormsModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

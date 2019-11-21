@@ -49,7 +49,7 @@ export class PollService {
 
   getPollEnkel(pollID: number): Observable<PollDto>{
     console.log(pollID);
-    return this.http.get<PollDto>("https://localhost:5001/api/polluser/bewerk" + pollID);
+    return this.http.get<PollDto>("https://localhost:5001/api/polluser/" + pollID);
   }
 
   vriendUitnodigenVoorPoll(uitnodiging: Uitnodiging){

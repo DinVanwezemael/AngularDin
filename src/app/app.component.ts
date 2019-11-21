@@ -21,7 +21,7 @@ export class AppComponent {
         this.loggedIn = false
     }
     else{
-      this.loggedIn = false;
+      this.loggedIn = true;
     }
   }
   

@@ -67,6 +67,10 @@ export class PollsComponent implements OnInit {
     this._pollService.verwijderOptie(optieID).subscribe();
   }
 
+  onViewUitkomst(pollID: number){
+      this.router.navigate(['uitkomst-poll', pollID]);
+  }
+
   ngOnInit() {
   }
 

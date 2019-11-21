@@ -30,7 +30,7 @@
             {{p.naam}}
           </a>
           <div class="options">
-          <button class="btn btn-circle btn-danger" (click)="onDeletePoll(p.pollUserID)"><i class="fas fa-trash-alt"></i></button>
+          <button class="btn btn-circle btn-primary" (click)="onViewUitkomst(p.pollID)"><i class="fas fa-trash-alt"></i></button>
             <button class="btn btn-circle btn-warning" [routerLink]="['/bewerk-poll', p.pollID]"><i class="fas fa-edit"></i></button>
             <button class="btn btn-circle btn-info" [routerLink]="['/uitnodigen', p.pollID]"><i class="fas fa-envelope"></i></button>
           </div>
