@@ -23,15 +23,29 @@
                 <input type="email" [(ngModel)]="userLocal.email" class="form-control" placeholder="email" type="text" formControlName="email" />
                 </p>
     
-            <p>
-                <label>Password:</label>
-                <input type="password" [(ngModel)]="userLocal.password" class="form-control" placeholder="Password" formControlName="password" />
-                </p>
     
     
-        <p><button class="btn btn-primary" type="submit" [disabled]="submitted">Opslaan</button></p>
+        <p><button class="btn btn-primary" type="submit" [disabled]="!profielForm.valid">Opslaan</button></p>
     
     
     
         </form>
+
+        <form [formGroup]="wachtwoordForm" (ngSubmit)="onChangePassword()">
+    <p>
+                <label>Nieuw wachtwoord:</label>
+                <input type="password"  class="form-control" placeholder="Nieuw wachtwoord" formControlName="password" />
+            </p>
+
+            <p>
+                <label>Herhaal nieuw wachtwoord:</label>
+                <input type="password" class="form-control" placeholder="Herhaal nieuw wachtwoord" formControlName="newPasswordRepeat" />
+            </p>
+        
+        
+            <p><button class="btn btn-primary" type="submit" [disabled]="!wachtwoordForm.valid">Verander</button></p>
+        
+        
+        
+            </form>
     </div>

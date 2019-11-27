@@ -16,18 +16,7 @@
             
     </div>
 
-<!-- <ul>        
-    <li *ngFor="let p of (poll | async)">
-        {{p.naam}}
-        <button (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
-        
-        <p *ngFor="let o of p.opties">
-            {{o.naam}} - {{o.aantalStemmen}}
-            <button class="btn btn-danger" (click)="verwijderOptie(o.optieID)"><i class="fas fa-trash-alt"></i></button>
-        </p>
 
-    </li>
-    </ul> -->
 
     <form [formGroup]="pollOptie" (ngSubmit)="nieuweOptie()">
     <p>
@@ -37,7 +26,7 @@
         
     </p>
 
-    <button class="btn btn-primary" color="primary" type="submit" [disabled]="submitted">Toevoegen</button>
+    <button class="btn btn-primary" color="primary" type="submit" [disabled]="!pollOptie.valid">Toevoegen</button>
 
     </form>
 

@@ -22,7 +22,7 @@ export class SecurityComponent implements OnInit {
   constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router, private app: AppComponent) {
     if(localStorage.getItem("userid") != null){
       app.loggedIn = true;
-      //this.router.navigate[('/polls')];
+      this.router.navigate[('polls')];
       
     }
     else{
@@ -33,6 +33,7 @@ export class SecurityComponent implements OnInit {
   }
 
   loggedIn
+  error
 
   ngOnInit() {
     
@@ -51,6 +52,7 @@ export class SecurityComponent implements OnInit {
       localStorage.setItem("username", result.username.toString());
       localStorage.setItem("firstname", result.firstName.toString());
       localStorage.setItem("lastname", result.lastName.toString());
+      localStorage.setItem("email", result.email.toString());
       this.app.loggedIn = true;
 
       this.app.firstname = result.firstName.toString();
@@ -59,7 +61,8 @@ export class SecurityComponent implements OnInit {
       this.app.id = result.userID.toString();
       this.app.loggedIn = true;
     this.router.navigate(['/polls']);
-  });
+  }
+  );
   this.app.loggedIn = true;
   }
 

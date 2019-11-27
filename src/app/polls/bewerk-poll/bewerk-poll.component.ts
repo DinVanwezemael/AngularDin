@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PollDto } from '../models/poll-dto.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PollService } from '../services/poll.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Optie } from '../models/optie.model';
 
@@ -23,7 +23,7 @@ poll: Observable<PollDto[]>;
   }
 
   pollOptie = new FormGroup({
-    optie: new FormControl('')
+    optie: new FormControl('', Validators.required)
   });
 
   getPoll(){
@@ -40,7 +40,10 @@ poll: Observable<PollDto[]>;
 
     }
 
-    this._pollService.insertOptie(optie).subscribe();
+    this._pollService.insertOptie(optie).subscribe( result => {
+      //this.router.navigate(['bewerk-poll', this.id]);
+    }
+    );
 
     this.getPoll();
 
@@ -49,14 +52,25 @@ poll: Observable<PollDto[]>;
 
   verwijderOptie(optieID){
     console.log(optieID);
-    this._pollService.verwijderOptie(optieID).subscribe();
+    this._pollService.verwijderOptie(optieID).subscribe(
+      result => {
+        this.router.navigate(['bewerk-poll', this.id]);
+      }
+    );
 
     this.getPoll();
+    this.getPoll();
+  }
+
+  onDeletePoll(pollID){
+    this._pollService.deletePoll(pollID).subscribe();
+    this.router.navigate(['polls']);
   }
 
   sub;
 
   id;
+
 
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 

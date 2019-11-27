@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PollService } from '../services/poll.service';
 import { PollDto } from '../models/poll-dto.model';
 import { Observable } from 'rxjs';
+import { Optie } from '../models/optie.model';
 
 @Component({
   selector: 'app-uitkomst-poll',
@@ -15,9 +16,13 @@ import { Observable } from 'rxjs';
 export class UitkomstPollComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticateService, private _Activatedroute: ActivatedRoute, private pollService: PollService) {
+   
 
+  
     
   }
+
+  
 
   sub
   id
@@ -25,22 +30,31 @@ export class UitkomstPollComponent implements OnInit {
   polls: Observable<PollDto[]>;
   titels: string[] = [];
   data : number[] = [];
-  colors : string[] = [];
+  poll: any[];
+  opties: Optie[] = [];
+
+  
+  
 
   getPoll(){
     this.polls = this.pollService.getPoll(this.id);
-  }
-
-  getRandomColor() {
-    var color = Math.floor(0x1000000 * Math.random()).toString(16);
-    return '#' + ('000000' + color).slice(-6);
   }
 
   doughnutChartLabels: Label[] = this.titels;
   doughnutChartData: MultiDataSet = [
     this.data
   ];
+
+ /*  doughnutChartLabels: Label[] = ['BMW', 'Ford', 'Tesla'];
+  doughnutChartData: MultiDataSet = [
+    [55, 25, 20]
+  ]; */
+
+  
+
   doughnutChartType: ChartType = 'doughnut';
+
+
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
@@ -49,15 +63,19 @@ export class UitkomstPollComponent implements OnInit {
       this.polls.forEach(poll => {
         poll.forEach(pArray => {
           pArray.opties.forEach(optie => {
-            this.data.push(optie.aantalStemmen);            
-            this.titels.push(optie.naam);            
-            this.colors.push(
-              this.getRandomColor()
-            );
+            data.push(optie.aantalStemmen);
+            labels.push(optie.naam); 
           });
         });
       });
+
+      let labels: string[] = [];
+      let data: number[] = [];
+
+      console.log(labels);
+      console.log(data);
   });
+
   }
 
 }

@@ -2,7 +2,7 @@
 
     <div *ngIf="voted; else opties">
         <h1>Je hebt al een stem uitgebracht voor deze poll!</h1>
-        <a [routerLink]="['/uitkomst-poll', id]">Uitslag bekijken</a>
+        <button (click)="uitslag(id)" class="btn btn-primary btn-lg btn-block">Uitslag van poll bekijken</button>
     </div>
 
     <ng-template #opties>

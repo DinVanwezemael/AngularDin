@@ -52,7 +52,11 @@ export class StemmenComponent implements OnInit {
     this._pollService.updateUitnodiging(uitnodiging).subscribe();
 
     console.log(pollID);
-    this.router.navigate(['overzicht-poll', pollID]);
+    this.router.navigate(['uitkomst-poll', pollID]);
+  }
+
+  uitslag(pollID: number){
+    this.router.navigate(['uitkomst-poll', pollID]);
   }
 
   sub

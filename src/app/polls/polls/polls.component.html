@@ -1,28 +1,10 @@
-<!-- <div class="container">
-<h1>Gemaakte polls</h1>
-<br>
-<button class="btn btn-primary btn-lg btn-block" (click)="nieuwePoll()">Nieuwe poll maken</button>
-
-    <ul>
-
-        <li *ngFor="let p of (polls | async)">{{p.naam}}
-            <button class="btn btn-danger" (click)="onDeletePoll(p.pollUserID)">Verwijder</button>
-            <button [routerLink]="['/bewerk-poll', p.pollID]">Bewerk</button>
-            <button [routerLink]="['/uitnodigen', p.pollID]">Vrienden uitnodigen</button>
-        
-            <p *ngFor="let o of p.opties">{{o.naam}} - {{o.aantalStemmen}}  <button (click)="stemOptie(o)">Stem!</button> <button (click)="verwijderOptie(o.optieID)">Verwijder</button> </p>
-
-        </li>
-    </ul>
-</div> -->
-
 <div class="container">
     <br>
     <h1>Zelfgemaakte polls</h1>
     <br>
     <br>
 
-<div *ngFor="let p of (polls | async)" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<!-- <div *ngFor="let p of (polls | async)" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="card">
       <div class="card-header" role="tab" id="test">
         <h4 class="card-title">
@@ -30,7 +12,7 @@
             {{p.naam}}
           </a>
           <div class="options">
-          <button class="btn btn-circle btn-primary" (click)="onViewUitkomst(p.pollID)"><i class="fas fa-trash-alt"></i></button>
+          <button class="btn btn-circle btn-primary" (click)="onViewUitkomst(p.pollID)"><i class="fas fa-chart-pie"></i></button>
             <button class="btn btn-circle btn-warning" [routerLink]="['/bewerk-poll', p.pollID]"><i class="fas fa-edit"></i></button>
             <button class="btn btn-circle btn-info" [routerLink]="['/uitnodigen', p.pollID]"><i class="fas fa-envelope"></i></button>
           </div>
@@ -47,5 +29,17 @@
       </div>
     </div>
     
-  </div>
+  </div> -->
+
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let p of (polls | async)">
+        {{p.naam}}
+        <div class="options">
+            <button class="btn btn-circle btn-primary" (click)="onViewUitkomst(p.pollID)"><i class="fas fa-chart-pie"></i></button>
+              <button class="btn btn-circle btn-warning" [routerLink]="['/bewerk-poll', p.pollID]"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-circle btn-info" [routerLink]="['/uitnodigen', p.pollID]"><i class="fas fa-envelope"></i></button>
+        </div>
+    </li>
+</ul>
   </div>

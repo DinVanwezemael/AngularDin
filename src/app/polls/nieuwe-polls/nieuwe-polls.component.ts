@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PollService } from '../services/poll.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Optie } from '../models/optie.model';
 import { PollDto } from '../models/poll-dto.model';
@@ -12,20 +12,23 @@ import { PollDto } from '../models/poll-dto.model';
 })
 export class NieuwePollsComponent implements OnInit {
 
+
+  pollForm = this.fb.group({
+    pollName: ['', Validators.required],
+    optie1: ['', Validators.required],
+    optie2: ['', Validators.required],
+    userID: [parseInt(localStorage.getItem('userid'))]
+  });
+
   constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router) {
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
+
+    
+    
    }
 
-  
-
-  pollForm = new FormGroup({
-    pollName: new FormControl(''),
-    userID: new FormControl(parseInt(localStorage.getItem('userid'))),
-    optie1: new FormControl(),
-    optie2: new FormControl()
-  });
 
   onSubmitPoll(){
 
@@ -52,11 +55,14 @@ export class NieuwePollsComponent implements OnInit {
       ]
     }
 
+
     console.log(this.pollForm.value);
     console.log(this.pollForm.get('userID').value);
-    this._pollService.insertPoll(poll).subscribe();
+    this._pollService.insertPoll(poll).subscribe(
+      (result) => {
+      this.router.navigate(['/polls']);
+    });
 
-    this.router.navigate(['polls']);
   }
 
   ngOnInit() {

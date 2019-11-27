@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  title = 'projectDin';
+  title = 'Polls';
   id = localStorage.getItem('userid');
   firstname = localStorage.getItem('firstname');
   lastname = localStorage.getItem('lastname');
@@ -32,5 +32,6 @@ export class AppComponent {
     localStorage.removeItem('firstname');
     localStorage.removeItem('lastname');
     localStorage.removeItem('username');
+    localStorage.removeItem('email');
   }
 }

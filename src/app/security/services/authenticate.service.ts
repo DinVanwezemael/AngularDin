@@ -28,4 +28,8 @@ constructor(private _httpClient: HttpClient) { }
     updateUser(user: User){
         return this._httpClient.put<User>("https://localhost:5001/api/UserBeheer/" + user.userID, user);
     }
+
+    changePassword(user: User){
+        return this._httpClient.put<User>("https://localhost:5001/api/UserBeheer/password/" + user.userID, user);
+    }
 }
