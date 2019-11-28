@@ -50,7 +50,8 @@ const appRoutes: Routes = [
   { path: 'uitgenodigde-polls', component: UitgenodigdePollsComponent },
   { path: 'overzicht-poll/:id', component: OverzichtPollComponent },
   { path: 'profiel-aanpassen', component: ProfielAanpassenComponent },
-  { path: 'uitkomst-poll/:id', component: UitkomstPollComponent }
+  { path: 'uitkomst-poll/:id', component: UitkomstPollComponent },
+  { path: '*', redirectTo: '' }
 ]
 
 

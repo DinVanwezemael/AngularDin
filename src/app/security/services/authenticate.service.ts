@@ -17,8 +17,8 @@ constructor(private _httpClient: HttpClient) { }
         return this._httpClient.post<User>("https://localhost:5001/api/userbeheer/insert", user);
     }
 
-    getAllUsers(): Observable<User[]>{
-        return this._httpClient.get<User[]>("https://localhost:5001/api/userbeheer/getall");
+    getAllUsers(userID : number): Observable<User[]>{
+        return this._httpClient.get<User[]>("https://localhost:5001/api/userbeheer/getall" + userID);
     }
 
     getUser(userID: number){

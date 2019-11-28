@@ -34,7 +34,7 @@ export class FriendComponent implements OnInit {
   }
 
   haalAlleUsersOp(){
-    this.allUsers = this._authenticateService.getAllUsers();
+    this.allUsers = this._authenticateService.getAllUsers(parseInt(localStorage.getItem('userid')));
     console.log(this.allUsers);
   }
 

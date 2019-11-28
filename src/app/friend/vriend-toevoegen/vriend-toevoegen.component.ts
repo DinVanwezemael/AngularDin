@@ -24,7 +24,7 @@ export class VriendToevoegenComponent implements OnInit {
   }
 
   haalAlleUsersOp(){
-    this.allUsers = this._authenticateService.getAllUsers();
+    this.allUsers = this._authenticateService.getAllUsers(parseInt(localStorage.getItem('userid')));
     console.log(this.allUsers);
   }
 
@@ -36,7 +36,11 @@ export class VriendToevoegenComponent implements OnInit {
       userFriendID: friend.userID
     }
 
-    this._friendService.stuurVerzoek(verzoekVriend).subscribe();
+    this._friendService.stuurVerzoek(verzoekVriend).subscribe(
+      result => {
+        this.haalAlleUsersOp();
+      }
+    );
 
   }
 
