@@ -70,7 +70,11 @@ export class FriendComponent implements OnInit {
 
   verwijderVriend(reference: number){
     console.log(reference);
-    this._friendService.verwijderVriend(reference).subscribe();
+    this._friendService.verwijderVriend(reference).subscribe(
+      result => {
+        this.haalVriendenOp();
+      }
+    );
   }
   
 

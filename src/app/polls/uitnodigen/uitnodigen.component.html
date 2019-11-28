@@ -1,9 +1,8 @@
 <div class="container">
-<h1>Vrienden uitnodigen</h1>
 <ul>        
     <li *ngFor="let p of (poll | async)">
         
-        <h2>{{p.naam}}</h2>
+        <h1 style="list-style: none;">Vrienden uitnodigen voor poll <span class="font-weight-bold font-italic">{{p.naam}}</span></h1>
         
 
         <ul class="list-group">

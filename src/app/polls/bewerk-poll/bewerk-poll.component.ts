@@ -41,11 +41,10 @@ poll: Observable<PollDto[]>;
     }
 
     this._pollService.insertOptie(optie).subscribe( result => {
-      //this.router.navigate(['bewerk-poll', this.id]);
+      this.getPoll();
     }
     );
 
-    this.getPoll();
 
     
   }
@@ -54,7 +53,7 @@ poll: Observable<PollDto[]>;
     console.log(optieID);
     this._pollService.verwijderOptie(optieID).subscribe(
       result => {
-        this.router.navigate(['bewerk-poll', this.id]);
+        this.getPoll();
       }
     );
 

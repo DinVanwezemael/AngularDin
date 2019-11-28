@@ -16,11 +16,12 @@ export class ProfielAanpassenComponent implements OnInit {
 
     this.userLocal =  JSON.parse(localStorage.getItem("currentUser"));
     this.getUser();
-    console.log(this.user);
+    this.username = localStorage.getItem('username');
   }
 
   user: Observable<User>;
   userLocal
+  username
 
   profielForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -55,6 +56,7 @@ export class ProfielAanpassenComponent implements OnInit {
       this.app.firstname = localStorage.getItem("firstname");
       this.app.lastname = localStorage.getItem("lastname");
       this.app.username = localStorage.getItem("username");
+      this.username = localStorage.getItem('username');
     }
 
     );

@@ -35,7 +35,11 @@ export class VriendVerzoekComponent implements OnInit {
       userFriendID: friend.userFriendID
     }
 
-    this._friendService.accepteerVerzoek(accepteerVriend).subscribe();
+    this._friendService.accepteerVerzoek(accepteerVriend).subscribe(result => {
+      this.haalVriendschapsverzoekenOp();
+    }
+      
+    );
 
   }
 
