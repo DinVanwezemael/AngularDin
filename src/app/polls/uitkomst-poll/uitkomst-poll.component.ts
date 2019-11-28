@@ -63,8 +63,8 @@ export class UitkomstPollComponent implements OnInit {
       this.polls.forEach(poll => {
         poll.forEach(pArray => {
           pArray.opties.forEach(optie => {
-            data.push(optie.aantalStemmen);
-            labels.push(optie.naam); 
+            this.data.push(optie.aantalStemmen);
+            this.titels.push(optie.naam); 
           });
         });
       });

@@ -32,6 +32,10 @@ export class FriendService {
     return this.http.put<Friend>("https://localhost:5001/api/Friend/accept" + updateFriend.friendID, updateFriend);
   }
 
+  verwijderVerzoek(id: number){
+    return this.http.delete("https://localhost:5001/api/Friend/decline" + id);
+  }
+
   verwijderVriend(reference: number){
     return this.http.delete("https://localhost:5001/api/Friend/" + reference);
   }

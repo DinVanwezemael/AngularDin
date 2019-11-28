@@ -38,7 +38,7 @@ export class StemmenComponent implements OnInit {
       userID: parseInt(localStorage.getItem('userid')),
       optieID: optie.optieID
     }
-    this._pollService.stemPoll(antwoord).subscribe();
+    
 
     this.getPollEnkel(parseInt(localStorage.getItem('userid')));
 
@@ -51,8 +51,12 @@ export class StemmenComponent implements OnInit {
 
     this._pollService.updateUitnodiging(uitnodiging).subscribe();
 
-    console.log(pollID);
-    this.router.navigate(['uitkomst-poll', pollID]);
+    this._pollService.stemPoll(antwoord).subscribe(
+      result => {
+        this.router.navigate(['uitkomst-poll', pollID]);
+      }
+    );
+    
   }
 
   uitslag(pollID: number){

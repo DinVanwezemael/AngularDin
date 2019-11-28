@@ -40,7 +40,17 @@ export class VriendVerzoekComponent implements OnInit {
     }
       
     );
+  }
 
+  verwijderVerzoek(friend){
+
+    
+
+    this._friendService.verwijderVerzoek(friend.friendID).subscribe(result => {
+      this.haalVriendschapsverzoekenOp();
+    }
+      
+    );
   }
 
   ngOnInit() {

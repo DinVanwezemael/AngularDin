@@ -5,7 +5,8 @@
                 <li class="list-group-item" *ngFor="let v of (verzoeken | async)">
                     {{v.username}}
                     <div class="options">
-                        <button class="btn btn-success" (click)="accepteerVerzoek(v)">Accepteer</button>
+                        <button class="btn btn-circle btn-success" (click)="accepteerVerzoek(v)"><i class="fas fa-user-check"></i></button>
+                        <button class="btn btn-circle btn-danger" (click)="verwijderVerzoek(v)"><i class="fas fa-user-times"></i></button>
                     </div>
                 </li>
             </ul>

@@ -30,7 +30,7 @@ export class FriendComponent implements OnInit {
   
 
   haalVriendenOp(){
-    this.friends = this._friendService.getFriendsUser(parseInt(localStorage.getItem('userid')));
+    this.friends = this._friendService.getFriendsUser(parseInt(localStorage.getItem('userid')), );
   }
 
   haalAlleUsersOp(){
