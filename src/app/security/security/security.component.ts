@@ -14,8 +14,8 @@ import { NavigatieComponent } from '../../navigatie/navigatie.component';
 export class SecurityComponent implements OnInit {
 
   loginForm = new FormGroup({
-    Username: new FormControl(''),
-    Password: new FormControl(''),
+    Username: new FormControl('', Validators.required),
+    Password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router, private app: AppComponent) {
@@ -41,7 +41,6 @@ export class SecurityComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.loginForm.get('Username').value);
 
     
     this._authenticateService.authenticate(this.loginForm.value).subscribe(result => {
@@ -59,9 +58,12 @@ export class SecurityComponent implements OnInit {
       this.app.id = result.userID.toString();
       this.app.loggedIn = true;
     this.router.navigate(['/polls']);
+  },
+  err => {
+    this.app.setAlert("De gebruikersnaam of wachtwoord is fout", "danger");
+    this.app.loggedIn = false;
   }
   );
-  this.app.loggedIn = true;
   }
 
   logout(){

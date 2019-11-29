@@ -39,11 +39,9 @@ export class ProfielAanpassenComponent implements OnInit {
   });
 
   onSubmit(){
-    console.log(this.profielForm.value);
 
     this.user = this._authenticatieService.getUser(parseInt(localStorage.getItem('userid')));
 
-    console.log(this.user);
 
     this._authenticatieService.updateUser(this.profielForm.value).subscribe(result => {
       localStorage.setItem("currentUser", JSON.stringify(result));
@@ -58,7 +56,10 @@ export class ProfielAanpassenComponent implements OnInit {
       this.app.username = localStorage.getItem("username");
       this.username = localStorage.getItem('username');
 
-      this.app.setAlert("" + this.username + " je profiel is aangepast!", "success");
+      this.app.setAlert("" + this.username + ", je profiel is aangepast!", "success");
+    },
+    err => {
+      this.app.setAlert("De gebruikersnaam bestaat al, kies een andere", "danger");
     }
 
     );
@@ -80,11 +81,10 @@ export class ProfielAanpassenComponent implements OnInit {
             username: localStorage.getItem('username')
         }
 
-        console.log(user);
 
         this._authenticatieService.changePassword(user).subscribe(
           result =>{
-            this.app.setAlert("" + this.username + " je wachtwoord is aangepast!", "success");
+            this.app.setAlert("" + this.username + ", je wachtwoord is aangepast!", "success");
           }
         );
       }

@@ -1,12 +1,94 @@
 <div class="container">
     <h1>Welkom {{naam}} bij pollmaker</h1>
 
-    <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
-            </div>
+    
+    <div class="row">
+
+        
+        <div (click)="goToNieuweVriendVerzoeken()" class="col-xl-6 col-md-6 mb-6">
+          <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
-              The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Nieuwe vriendschapsverzoeken</div>
+
+                  <div *ngFor="let v of verzoeken_" class="h5 mb-2 font-weight-bold text-gray-800">{{v.username}}</div>
+
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-user-clock fa-2x text-gray-300"></i>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+
+
+        
+        <div (click)="goToUP()" class="col-xl-6 col-md-6 mb-6">
+          <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Uitgenodigde polls</div>
+                  <div *ngFor="let up of (uitgenodigdePolls | async)" class="h5 mb-2 font-weight-bold text-gray-800">{{up.naam}}</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row"> 
+
+
+        <div (click)="goToZelfgemaaktePolls()" class="col-xl-6 card-cust col-md-6 mb-6">
+          <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">zelfgemaakte polls</div>
+
+
+                  <div *ngFor="let zp of (zelfgemaaktePolls | async)" class="h5 mb-0 font-weight-bold text-gray-800">{{zp.naam}}</div>
+                    
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-chart-pie fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        
+        <div (click)="goToVrienden()" class="col-xl-6 card-cust col-md-6 mb-6">
+          <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Vrienden</div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div *ngFor="let f of (vrienden | async)" class="h5 mb-2 mr-3 font-weight-bold text-gray-800">{{f.username}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-users fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
 </div>

@@ -24,7 +24,7 @@ export class VriendVerzoekComponent implements OnInit {
 
   haalVriendschapsverzoekenOp(){
     this.verzoeken = this._friendService.getVriendVerzoeken(parseInt(localStorage.getItem('userid')));
-  }
+  } 
 
   accepteerVerzoek(friend){
 

@@ -20,7 +20,6 @@ export class StemmenComponent implements OnInit {
   voted
 
   constructor(private _pollService: PollService, private router: Router, private _Activatedroute:ActivatedRoute) {
-    console.log(this.reference);
   }
 
 
@@ -82,15 +81,12 @@ export class StemmenComponent implements OnInit {
       if(this.reference > 0){
         this.voted = true;
         this.notvoted = false;
-        console.log(this.voted);
       }
       else{
         this.notvoted = true;
         this.voted = false;
-        console.log(this.voted);
       }
 
-      console.log(this.id + " " + this.uitnodigingID + " " + this.userID + " " + this.reference);
   });
   }
 

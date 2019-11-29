@@ -26,7 +26,6 @@ export class VriendToevoegenComponent implements OnInit {
 
   haalAlleUsersOp(){
     this.allUsers = this._authenticateService.getAllUsers(parseInt(localStorage.getItem('userid')));
-    console.log(this.allUsers);
   }
 
   stuurVerzoek(friend){

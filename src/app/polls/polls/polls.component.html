@@ -1,36 +1,7 @@
 <div class="container">
-    <br>
-    <h1>Zelfgemaakte polls</h1>
-    <br>
-    <br>
-
-<!-- <div *ngFor="let p of (polls | async)" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="card">
-      <div class="card-header" role="tab" id="test">
-        <h4 class="card-title">
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#poll{{p.pollID}}" aria-expanded="false" aria-controls="collapseOne">
-            {{p.naam}}
-          </a>
-          <div class="options">
-          <button class="btn btn-circle btn-primary" (click)="onViewUitkomst(p.pollID)"><i class="fas fa-chart-pie"></i></button>
-            <button class="btn btn-circle btn-warning" [routerLink]="['/bewerk-poll', p.pollID]"><i class="fas fa-edit"></i></button>
-            <button class="btn btn-circle btn-info" [routerLink]="['/uitnodigen', p.pollID]"><i class="fas fa-envelope"></i></button>
-          </div>
-        </h4>
-      </div>
-      <div id="poll{{p.pollID}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="test">
-        <div class="card-body">
-         <p *ngFor="let o of p.opties">
-             {{o.naam}} - {{o.aantalStemmen}}
-             <button class="btn btn-circle btn-success" (click)="stemOptie(o)"><i class="fas fa-vote-yea"></i></button>
-             <button class="btn btn-circle btn-danger" (click)="verwijderOptie(o.optieID)"><i class="fas fa-trash-alt"></i></button>
-            </p>
-        </div>
-      </div>
-    </div>
     
-  </div> -->
-
+    <h1>Zelfgemaakte polls</h1>
+    
 
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let p of (polls | async)">

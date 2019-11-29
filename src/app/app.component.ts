@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { interval, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 
 
@@ -23,7 +21,7 @@ export class AppComponent {
   color = "";
   message = "";
   interval
-  timeLeft: number = 10;
+  timeLeft: number = 7;
 
   constructor(){
     if(localStorage.getItem('userid') == null){
@@ -37,7 +35,7 @@ export class AppComponent {
   }
 
   setAlert(message, color){
-    this.timeLeft = 10;
+    this.timeLeft = 7;
     this.alert = true;
     this.message = message;
     this.color = color

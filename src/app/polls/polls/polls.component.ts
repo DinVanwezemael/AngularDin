@@ -19,7 +19,7 @@ export class PollsComponent implements OnInit {
 
   id = parseInt(localStorage.getItem('userid'));
 
-  //polls: PollUser[] = [];
+  
   polls: Observable<PollDto[]>;
 
   constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router) {
@@ -63,7 +63,6 @@ export class PollsComponent implements OnInit {
   }
 
   verwijderOptie(optieID){
-    console.log(optieID);
     this._pollService.verwijderOptie(optieID).subscribe();
   }
 

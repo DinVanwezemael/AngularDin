@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../../security/models/user.model';
 
 import { AuthenticateService } from '../../security/services/authenticate.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-registreer',
@@ -12,21 +13,28 @@ import { AuthenticateService } from '../../security/services/authenticate.servic
 })
 export class RegistreerComponent implements OnInit {
 
-  submitted : boolean = false;
   registreerForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
   });
 
-  constructor(private _authenticatieService: AuthenticateService, private router: Router) { }
+  constructor(private _authenticatieService: AuthenticateService, private router: Router, private appComponent: AppComponent) { }
 
   onSubmit(){
     console.log('hier geweest');
-    this._authenticatieService.insert(this.registreerForm.value).subscribe();
-    this.router.navigate(['/security']);
+    this._authenticatieService.insert(this.registreerForm.value).subscribe(
+      result => {
+      this.appComponent.setAlert("" + this.registreerForm.get('username').value + ", je profiel is succesvol aangemaakt!", "success");
+      this.router.navigate(['/security']);
+      },
+      err => {
+        this.appComponent.setAlert("De gebruikersnaam is al bezet, kies een andere", "danger");
+      }
+    );
+    
   }
 
   login(){

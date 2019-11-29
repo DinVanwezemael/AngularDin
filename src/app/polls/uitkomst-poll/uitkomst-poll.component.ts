@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
 import { AuthenticateService } from 'src/app/security/services/authenticate.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PollService } from '../services/poll.service';
 import { PollDto } from '../models/poll-dto.model';
 import { Observable } from 'rxjs';
@@ -15,12 +15,7 @@ import { Optie } from '../models/optie.model';
 })
 export class UitkomstPollComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticateService, private _Activatedroute: ActivatedRoute, private pollService: PollService) {
-   
-
-  
-    
-  }
+  constructor(private authenticationService: AuthenticateService, private _Activatedroute: ActivatedRoute, private pollService: PollService, private router: Router) {}
 
   
 
@@ -40,15 +35,15 @@ export class UitkomstPollComponent implements OnInit {
     this.polls = this.pollService.getPoll(this.id);
   }
 
+  back(){
+    this.router.navigate(['/uitgenodigde-polls']);
+  }
+
   doughnutChartLabels: Label[] = this.titels;
   doughnutChartData: MultiDataSet = [
     this.data
   ];
 
- /*  doughnutChartLabels: Label[] = ['BMW', 'Ford', 'Tesla'];
-  doughnutChartData: MultiDataSet = [
-    [55, 25, 20]
-  ]; */
 
   
 
@@ -68,12 +63,6 @@ export class UitkomstPollComponent implements OnInit {
           });
         });
       });
-
-      let labels: string[] = [];
-      let data: number[] = [];
-
-      console.log(labels);
-      console.log(data);
   });
 
   }
