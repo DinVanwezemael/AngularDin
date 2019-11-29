@@ -13,7 +13,6 @@ import { NavigatieComponent } from '../../navigatie/navigatie.component';
 })
 export class SecurityComponent implements OnInit {
 
-  submitted : boolean = false;
   loginForm = new FormGroup({
     Username: new FormControl(''),
     Password: new FormControl(''),
@@ -43,7 +42,6 @@ export class SecurityComponent implements OnInit {
 
   onSubmit(){
     console.log(this.loginForm.get('Username').value);
-    this.submitted = true;
 
     
     this._authenticateService.authenticate(this.loginForm.value).subscribe(result => {

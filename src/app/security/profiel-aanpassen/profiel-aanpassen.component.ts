@@ -57,6 +57,8 @@ export class ProfielAanpassenComponent implements OnInit {
       this.app.lastname = localStorage.getItem("lastname");
       this.app.username = localStorage.getItem("username");
       this.username = localStorage.getItem('username');
+
+      this.app.setAlert("" + this.username + " je profiel is aangepast!", "success");
     }
 
     );
@@ -80,10 +82,14 @@ export class ProfielAanpassenComponent implements OnInit {
 
         console.log(user);
 
-        this._authenticatieService.changePassword(user).subscribe();
+        this._authenticatieService.changePassword(user).subscribe(
+          result =>{
+            this.app.setAlert("" + this.username + " je wachtwoord is aangepast!", "success");
+          }
+        );
       }
       else{
-        console.log("fout");
+        this.app.setAlert("Je opgegeven wachtwoorden zijn niet identiek", "danger");
       }
   }
 

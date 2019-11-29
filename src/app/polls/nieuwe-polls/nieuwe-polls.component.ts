@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Optie } from '../models/optie.model';
 import { PollDto } from '../models/poll-dto.model';
+import { AppComponent } from '../../app.component';
+import { interval } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-nieuwe-polls',
@@ -20,7 +23,7 @@ export class NieuwePollsComponent implements OnInit {
     userID: [parseInt(localStorage.getItem('userid'))]
   });
 
-  constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router) {
+  constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) {
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -55,11 +58,10 @@ export class NieuwePollsComponent implements OnInit {
       ]
     }
 
-
-    console.log(this.pollForm.value);
-    console.log(this.pollForm.get('userID').value);
     this._pollService.insertPoll(poll).subscribe(
       (result) => {
+        this.appComponent.setAlert("Nieuwe poll " + poll.pollName + " is aangemaakt!", "success");
+
       this.router.navigate(['/polls']);
     });
 

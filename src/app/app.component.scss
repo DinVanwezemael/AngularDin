@@ -9,3 +9,15 @@
 .jumbotron{
     padding: 1rem 1rem;
 }
+
+.alert-cust{
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    width: 800px;
+
+    .alert{
+        height: 50px;
+        font-size: 17px;
+    }
+}

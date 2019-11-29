@@ -5,6 +5,7 @@ import { PollService } from '../services/poll.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Optie } from '../models/optie.model';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-bewerk-poll',
@@ -15,7 +16,7 @@ export class BewerkPollComponent implements OnInit {
 
 poll: Observable<PollDto[]>;
 
-  constructor(private _Activatedroute:ActivatedRoute, private _pollService: PollService, private fb: FormBuilder, private router: Router) { 
+  constructor(private _Activatedroute:ActivatedRoute, private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) { 
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -41,6 +42,7 @@ poll: Observable<PollDto[]>;
     }
 
     this._pollService.insertOptie(optie).subscribe( result => {
+      this.appComponent.setAlert("Nieuwe optie " + optie.naam + " is toegevoegd!", "success");
       this.getPoll();
     }
     );
@@ -49,10 +51,10 @@ poll: Observable<PollDto[]>;
     
   }
 
-  verwijderOptie(optieID){
-    console.log(optieID);
-    this._pollService.verwijderOptie(optieID).subscribe(
+  verwijderOptie(optie){
+    this._pollService.verwijderOptie(optie.optieID).subscribe(
       result => {
+        this.appComponent.setAlert("Optie " + optie.naam + " is verwijderd!", "danger");
         this.getPoll();
       }
     );
@@ -61,8 +63,9 @@ poll: Observable<PollDto[]>;
     this.getPoll();
   }
 
-  onDeletePoll(pollID){
-    this._pollService.deletePoll(pollID).subscribe();
+  onDeletePoll(poll){
+    this._pollService.deletePoll(poll.pollUserID).subscribe();
+    this.appComponent.setAlert("Poll " + poll.naam + " is verwijderd!", "danger");
     this.router.navigate(['polls']);
   }
 

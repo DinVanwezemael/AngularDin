@@ -9,7 +9,7 @@
             <li class="list-group-item" *ngFor="let f of (friends | async)">
                 {{f.username}}
                 <div class="options">
-                    <button class="btn btn-primary btn-circle" (click)="vriendUitnodigen(p.pollID, f.userFriendID)"><i class="fas fa-envelope"></i></button>
+                    <button class="btn btn-primary btn-circle" (click)="vriendUitnodigen(p.pollID, f.userFriendID, f.username)"><i class="fas fa-envelope"></i></button>
                 </div>
             </li>
         </ul>

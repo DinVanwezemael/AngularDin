@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/security/models/user.model';
 import { Router } from '@angular/router';
 import { AddFriend } from '../models/add-friend.model';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-vriend-toevoegen',
@@ -16,7 +17,7 @@ export class VriendToevoegenComponent implements OnInit {
 
   allUsers: Observable<User[]>;
 
-  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router) {
+  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router, private appComponent: AppComponent) {
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -38,6 +39,7 @@ export class VriendToevoegenComponent implements OnInit {
 
     this._friendService.stuurVerzoek(verzoekVriend).subscribe(
       result => {
+        this.appComponent.setAlert("Je vriendschapsverzoek naar " + friend.username + " is verstuurd!", "success");
         this.haalAlleUsersOp();
       }
     );

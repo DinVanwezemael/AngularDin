@@ -7,6 +7,7 @@ import { PollDto } from '../models/poll-dto.model';
 import { FriendService } from 'src/app/friend/services/friend.service';
 import { Uitnodiging } from '../models/uitnodiging.model';
 import { Friend } from 'src/app/friend/models/friend.model';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-uitnodigen',
@@ -18,7 +19,7 @@ export class UitnodigenComponent implements OnInit {
   poll: Observable<PollDto[]>;
   friends: Observable<Friend[]>;
 
-  constructor(private _Activatedroute:ActivatedRoute, private _friendService: FriendService, private _pollService: PollService, private fb: FormBuilder, private router: Router) { 
+  constructor(private _Activatedroute:ActivatedRoute, private _friendService: FriendService, private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) { 
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -34,7 +35,7 @@ export class UitnodigenComponent implements OnInit {
     this.friends = this._friendService.getFriendsUser(parseInt(localStorage.getItem('userid')));
   }
 
-  vriendUitnodigen(pollID: number, friendID: number){
+  vriendUitnodigen(pollID: number, friendID: number, username: string){
 
     let uitnodigen: Uitnodiging = {
       pollID: pollID,
@@ -42,9 +43,11 @@ export class UitnodigenComponent implements OnInit {
       reference: 0
     }
 
-    console.log(uitnodigen);
-
-    this._pollService.vriendUitnodigenVoorPoll(uitnodigen).subscribe();
+    this._pollService.vriendUitnodigenVoorPoll(uitnodigen).subscribe(
+      result =>{
+        this.appComponent.setAlert("" + username + " is uitgenodigd voor de poll!", "success");
+      }
+    );
   }
 
 id

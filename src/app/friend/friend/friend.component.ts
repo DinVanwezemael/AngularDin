@@ -6,6 +6,7 @@ import { User } from 'src/app/security/models/user.model';
 import { Friend } from '../models/friend.model';
 import { AddFriend } from '../models/add-friend.model';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-friend',
@@ -18,7 +19,8 @@ export class FriendComponent implements OnInit {
   allUsers: Observable<User[]>;
   verzoeken: Observable<any[]>;
 
-  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router) {
+
+  constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router, private appComponent: AppComponent) {
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -68,10 +70,10 @@ export class FriendComponent implements OnInit {
 
   }
 
-  verwijderVriend(reference: number){
-    console.log(reference);
-    this._friendService.verwijderVriend(reference).subscribe(
+  verwijderVriend(friend){
+    this._friendService.verwijderVriend(friend.reference).subscribe(
       result => {
+        this.appComponent.setAlert(friend.username + " is verwijderd van je vriendenlijst!", "danger");
         this.haalVriendenOp();
       }
     );
