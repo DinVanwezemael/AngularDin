@@ -18,6 +18,8 @@ export class UitnodigenComponent implements OnInit {
 
   poll: Observable<PollDto[]>;
   friends: Observable<Friend[]>;
+  id
+  sub
 
   constructor(private _Activatedroute:ActivatedRoute, private _friendService: FriendService, private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) { 
     if(localStorage.getItem('userid') == null){
@@ -50,9 +52,7 @@ export class UitnodigenComponent implements OnInit {
     );
   }
 
-id
 
-sub
 
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 

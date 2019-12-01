@@ -13,30 +13,24 @@ import { NavigatieComponent } from '../../navigatie/navigatie.component';
 })
 export class SecurityComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    Username: new FormControl('', Validators.required),
-    Password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-  });
+  
 
   constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router, private app: AppComponent) {
     if(localStorage.getItem("userid") != null){
       app.loggedIn = true;
-      this.router.navigate[('polls')];
+      this.router.navigate[('home')];
       
     }
-    else{
-      //appComponent.loggedIn = false;
-    }
 
-    
   }
 
   loggedIn
   error
 
-  ngOnInit() {
-    
-}
+  loginForm = new FormGroup({
+    Username: new FormControl('', Validators.required),
+    Password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  });
 
 
 
@@ -57,7 +51,7 @@ export class SecurityComponent implements OnInit {
       this.app.username = result.username.toString();
       this.app.id = result.userID.toString();
       this.app.loggedIn = true;
-    this.router.navigate(['/polls']);
+    this.router.navigate(['']);
   },
   err => {
     this.app.setAlert("De gebruikersnaam of wachtwoord is fout", "danger");
@@ -74,6 +68,14 @@ export class SecurityComponent implements OnInit {
   registreer(){
     this.router.navigate(['/registreer']);
   }
+
+  ngOnInit() {
+    
+}
+
+
+
+  
 
   
 

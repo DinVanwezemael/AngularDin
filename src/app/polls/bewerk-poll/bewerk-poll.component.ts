@@ -15,6 +15,8 @@ import { AppComponent } from 'src/app/app.component';
 export class BewerkPollComponent implements OnInit {
 
 poll: Observable<PollDto[]>;
+sub;
+id;
 
   constructor(private _Activatedroute:ActivatedRoute, private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) { 
     if(localStorage.getItem('userid') == null){
@@ -58,9 +60,6 @@ poll: Observable<PollDto[]>;
         this.getPoll();
       }
     );
-
-    this.getPoll();
-    this.getPoll();
   }
 
   onDeletePoll(poll){
@@ -69,9 +68,7 @@ poll: Observable<PollDto[]>;
     this.router.navigate(['polls']);
   }
 
-  sub;
-
-  id;
+  
 
 
   ngOnInit() {

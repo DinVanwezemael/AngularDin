@@ -1,13 +1,3 @@
 export class Poll {
-    pollID: number;
-    naam: string;
-    userID: number;
-    pollUserID: number;
-
-    constructor(pollID: number, naam: string, userID: number, pollUserID: number){
-        this.pollID = pollID;
-        this.naam = naam;
-        this.userID = userID;
-        this.pollUserID = pollUserID;
-    }
+    constructor(public pollID: number, public naam: string, public userID: number,public pollUserID: number){}
 }

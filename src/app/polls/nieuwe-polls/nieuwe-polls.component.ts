@@ -27,9 +27,6 @@ export class NieuwePollsComponent implements OnInit {
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
-
-    
-    
    }
 
 
