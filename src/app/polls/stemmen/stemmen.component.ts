@@ -15,7 +15,6 @@ import { Poll } from '../models/poll.model';
 export class StemmenComponent implements OnInit {
 
   poll: Observable<PollDto[]>;
-  pollEnkel: Observable<PollDto>;
   uitnodiging: Observable<Uitnodiging>;
   voted
 
@@ -27,10 +26,7 @@ export class StemmenComponent implements OnInit {
     this.poll = this._pollService.getPoll(pollID);
   }
 
-  getPollEnkel(pollID){
-    this.pollEnkel = this._pollService.getPollEnkel(pollID);
-  }
-
+//stem uitbrengen
   stemOptie(optie, pollID: number){
 
     let antwoord: Antwoord = {
@@ -39,8 +35,6 @@ export class StemmenComponent implements OnInit {
     }
     
 
-    this.getPollEnkel(parseInt(localStorage.getItem('userid')));
-
     let uitnodiging: any = {
       pollID: this.id,
       reference: optie.optieID,
@@ -48,6 +42,7 @@ export class StemmenComponent implements OnInit {
       uitnodigingID: this.uitnodigingID
     } 
 
+    //uitnodiging updaten zodat user niet opnieuw kan stemmen
     this._pollService.updateUitnodiging(uitnodiging).subscribe();
 
     this._pollService.stemPoll(antwoord).subscribe(
@@ -69,6 +64,8 @@ export class StemmenComponent implements OnInit {
   reference
   notvoted
 
+
+  //ophalen van pollid, uitnodigingid, userid, reference
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');
@@ -78,6 +75,8 @@ export class StemmenComponent implements OnInit {
 
       this.poll = this._pollService.getPoll(this.id);
       
+
+      //als reference groter is als 0 is er als gestemd op de poll
       if(this.reference > 0){
         this.voted = true;
         this.notvoted = false;

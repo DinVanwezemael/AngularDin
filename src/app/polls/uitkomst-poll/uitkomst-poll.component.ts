@@ -49,7 +49,7 @@ export class UitkomstPollComponent implements OnInit {
 
   doughnutChartType: ChartType = 'doughnut';
 
-
+//opties van poll ophalen + het aantal stemmen op die optie
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');

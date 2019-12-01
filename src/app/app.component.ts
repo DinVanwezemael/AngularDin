@@ -24,6 +24,7 @@ export class AppComponent {
   timeLeft: number = 7;
 
   constructor(){
+    //controleren als user is ingelogd
     if(localStorage.getItem('userid') == null){
         this.loggedIn = false
     }
@@ -34,6 +35,7 @@ export class AppComponent {
     
   }
 
+  //alert weergeven
   setAlert(message, color){
     this.timeLeft = 7;
     this.alert = true;
@@ -51,7 +53,7 @@ export class AppComponent {
   }
 
   
-
+//verwijderen van localStorage
   logout(){
     localStorage.removeItem('currentUser');
     localStorage.removeItem('userid');

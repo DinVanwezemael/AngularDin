@@ -21,6 +21,7 @@ export class FriendComponent implements OnInit {
 
 
   constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router, private appComponent: AppComponent) {
+    //controle als gebruiker is ingelogd
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -43,8 +44,10 @@ export class FriendComponent implements OnInit {
     this.verzoeken = this._friendService.getVriendVerzoeken(parseInt(localStorage.getItem('userid')));
   }
 
+  //vriendschapverzoek versturen
   stuurVerzoek(friend){
 
+    //status 1 is een verzoek
     let verzoekVriend: AddFriend = {
       status: 1,
       userID: parseInt(localStorage.getItem('userid')),
@@ -55,8 +58,10 @@ export class FriendComponent implements OnInit {
 
   }
 
+  //accepteren van verzoek
   accepteerVerzoek(friend){
 
+    //status van vriendschap is 2
     let accepteerVriend: Friend = {
       friendID: friend.friendID,
       username: friend.username,
@@ -69,6 +74,7 @@ export class FriendComponent implements OnInit {
 
   }
 
+  //vriend verwijderen en alert tonen
   verwijderVriend(friend){
     this._friendService.verwijderVriend(friend.reference).subscribe(
       result => {

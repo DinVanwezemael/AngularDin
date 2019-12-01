@@ -13,9 +13,14 @@ import { Chart } from 'chart.js';
 export class OverzichtPollComponent implements OnInit {
 
   poll: Observable<PollDto[]>;
+  sub
+  id
 
   constructor(private _pollService: PollService, private router: Router, private _Activatedroute:ActivatedRoute) {
-
+//controle als gebruiker is ingelogd
+if(localStorage.getItem('userid') == null){
+  this.router.navigate(['security']);
+}
   }
 
 
@@ -23,10 +28,9 @@ export class OverzichtPollComponent implements OnInit {
     this.poll = this._pollService.getPoll(pollID);
   }
 
-  sub
+  
 
-  id
-
+  //id van de poll ophalen
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
       this.id = params.get('id');  

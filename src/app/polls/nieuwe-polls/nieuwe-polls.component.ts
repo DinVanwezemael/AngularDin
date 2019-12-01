@@ -24,15 +24,15 @@ export class NieuwePollsComponent implements OnInit {
   });
 
   constructor(private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) {
+    //controle als gebruiker is ingelogd
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
    }
 
 
+   //nieuwe poll aanmaken met minstens 2 opties
   onSubmitPoll(){
-
-
     let poll: PollDto = {
       pollName: this.pollForm.get('pollName').value,
       pollID:0,
@@ -55,6 +55,7 @@ export class NieuwePollsComponent implements OnInit {
       ]
     }
 
+    //tonen van alert + polls component weergeven
     this._pollService.insertPoll(poll).subscribe(
       (result) => {
         this.appComponent.setAlert("Nieuwe poll " + poll.pollName + " is aangemaakt!", "success");

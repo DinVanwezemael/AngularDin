@@ -19,6 +19,7 @@ sub;
 id;
 
   constructor(private _Activatedroute:ActivatedRoute, private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) { 
+    //controle als gebruiker is ingelogd
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -33,6 +34,8 @@ id;
     this.poll = this._pollService.getPoll(parseInt(this.id));
   }
 
+
+  //nieuwe optie toevoegen aan poll
   nieuweOptie(){
 
     let optie: Optie = {
@@ -43,6 +46,7 @@ id;
 
     }
 
+    //poll opnieuw ophalen + tonen van alert
     this._pollService.insertOptie(optie).subscribe( result => {
       this.appComponent.setAlert("Nieuwe optie " + optie.naam + " is toegevoegd!", "success");
       this.getPoll();
@@ -53,6 +57,7 @@ id;
     
   }
 
+  //optie van poll verwijderen + tonen van alert
   verwijderOptie(optie){
     this._pollService.verwijderOptie(optie.optieID).subscribe(
       result => {
@@ -62,6 +67,8 @@ id;
     );
   }
 
+
+  //poll verwijderen + tonen van alert
   onDeletePoll(poll){
     this._pollService.deletePoll(poll.pollUserID).subscribe();
     this.appComponent.setAlert("Poll " + poll.naam + " is verwijderd!", "danger");
@@ -70,7 +77,7 @@ id;
 
   
 
-
+//id van de poll ophalen die we willen tonen
   ngOnInit() {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
        this.id = params.get('id');  

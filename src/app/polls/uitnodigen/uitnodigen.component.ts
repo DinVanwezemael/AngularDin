@@ -22,6 +22,7 @@ export class UitnodigenComponent implements OnInit {
   sub
 
   constructor(private _Activatedroute:ActivatedRoute, private _friendService: FriendService, private _pollService: PollService, private fb: FormBuilder, private router: Router, private appComponent: AppComponent) { 
+    //controleren als user is ingelogd
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -37,6 +38,7 @@ export class UitnodigenComponent implements OnInit {
     this.friends = this._friendService.getFriendsUser(parseInt(localStorage.getItem('userid')));
   }
 
+  //vriend uitnodigen voor op een poll te stemmen
   vriendUitnodigen(pollID: number, friendID: number, username: string){
 
     let uitnodigen: Uitnodiging = {
@@ -45,6 +47,7 @@ export class UitnodigenComponent implements OnInit {
       reference: 0
     }
 
+    //vriend uinodigen + tonen van alert
     this._pollService.vriendUitnodigenVoorPoll(uitnodigen).subscribe(
       result =>{
         this.appComponent.setAlert("" + username + " is uitgenodigd voor de poll!", "success");

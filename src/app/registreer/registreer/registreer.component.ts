@@ -24,12 +24,14 @@ export class RegistreerComponent implements OnInit {
   constructor(private _authenticatieService: AuthenticateService, private router: Router, private appComponent: AppComponent) { }
 
   onSubmit(){
-    console.log('hier geweest');
+
+    //nieuwe user aanmaken
     this._authenticatieService.insert(this.registreerForm.value).subscribe(
       result => {
       this.appComponent.setAlert("" + this.registreerForm.get('username').value + ", je profiel is succesvol aangemaakt!", "success");
       this.router.navigate(['/security']);
       },
+      //alert tonen wanneer het registreren niet gelukt is
       err => {
         this.appComponent.setAlert("De gebruikersnaam is al bezet, kies een andere", "danger");
       }

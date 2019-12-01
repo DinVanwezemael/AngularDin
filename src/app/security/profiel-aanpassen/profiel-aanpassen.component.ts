@@ -42,7 +42,7 @@ export class ProfielAanpassenComponent implements OnInit {
 
     this.user = this._authenticatieService.getUser(parseInt(localStorage.getItem('userid')));
 
-
+//gegevens van user local opslaan
     this._authenticatieService.updateUser(this.profielForm.value).subscribe(result => {
       localStorage.setItem("currentUser", JSON.stringify(result));
       localStorage.setItem("userid", result.userID.toString());
@@ -69,9 +69,12 @@ export class ProfielAanpassenComponent implements OnInit {
     this.user = this._authenticatieService.getUser(parseInt(localStorage.getItem('userid')));
   }
 
+  //veranderen van wachtwoord
   onChangePassword(){
+    //controleren als de 2 wachtwoorden identiek zijn
       if(this.wachtwoordForm.controls['password'].value == this.wachtwoordForm.controls['newPasswordRepeat'].value){
         
+        //bestaande gegevens behouden
         let user : User = {
             userID: parseInt(localStorage.getItem('userid')),
             email: localStorage.getItem('email'),
@@ -81,7 +84,7 @@ export class ProfielAanpassenComponent implements OnInit {
             username: localStorage.getItem('username')
         }
 
-
+        //gegevens wegschrijven + tonen van alert
         this._authenticatieService.changePassword(user).subscribe(
           result =>{
             this.app.setAlert("" + this.username + ", je wachtwoord is aangepast!", "success");

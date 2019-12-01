@@ -18,6 +18,7 @@ export class VriendToevoegenComponent implements OnInit {
   allUsers: Observable<User[]>;
 
   constructor(private _friendService: FriendService, private _authenticateService: AuthenticateService, private router: Router, private appComponent: AppComponent) {
+    //controle als gebruiker is ingelogd
     if(localStorage.getItem('userid') == null){
       this.router.navigate(['security']);
     }
@@ -28,14 +29,17 @@ export class VriendToevoegenComponent implements OnInit {
     this.allUsers = this._authenticateService.getAllUsers(parseInt(localStorage.getItem('userid')));
   }
 
+  //verzoek versturen
   stuurVerzoek(friend){
 
+    //status 1 is gelijk aan een verzoek
     let verzoekVriend: AddFriend = {
       status: 1,
       userID: parseInt(localStorage.getItem('userid')),
       userFriendID: friend.userID
     }
 
+    //tonen van alert en users opnieuw ophalen
     this._friendService.stuurVerzoek(verzoekVriend).subscribe(
       result => {
         this.appComponent.setAlert("Je vriendschapsverzoek naar " + friend.username + " is verstuurd!", "success");

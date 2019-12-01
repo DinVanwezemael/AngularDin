@@ -16,6 +16,7 @@ export class SecurityComponent implements OnInit {
   
 
   constructor(private _authenticateService : AuthenticateService, private formBuilder: FormBuilder, private router: Router, private app: AppComponent) {
+    //controleren als user in ingelogd
     if(localStorage.getItem("userid") != null){
       app.loggedIn = true;
       this.router.navigate[('home')];
@@ -36,7 +37,7 @@ export class SecurityComponent implements OnInit {
 
   onSubmit(){
 
-    
+    //gegevens van user local opslaan
     this._authenticateService.authenticate(this.loginForm.value).subscribe(result => {
       localStorage.setItem("currentUser", JSON.stringify(result));
       localStorage.setItem("userid", result.userID.toString());
@@ -60,10 +61,6 @@ export class SecurityComponent implements OnInit {
   );
   }
 
-  logout(){
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('userid');
-  }
 
   registreer(){
     this.router.navigate(['/registreer']);
